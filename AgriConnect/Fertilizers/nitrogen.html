@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriConnect Data System - Nitrogen Fertilizers</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../Home/css/homestyle.css">
+    <style>
+        .nutrient-chart {
+            height: 300px;
+            margin-bottom: 2rem;
+        }
+        
+        .benefit-card {
+            transition: transform 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .application-timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .application-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: var(--primary-orange);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 20px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--primary-orange);
+        }
+        
+        .crop-recommendation {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .crop-recommendation:hover {
+            background-color: rgba(255, 165, 52, 0.1);
+        }
+        
+        .crop-details {
+            display: none;
+            padding: 1rem;
+            border-left: 3px solid var(--primary-orange);
+            margin-top: 1rem;
+        }
+        
+        .crop-recommendation.active .crop-details {
+            display: block;
+        }
+        
+        .crop-recommendation.active {
+            background-color: rgba(255, 165, 52, 0.05);
+        }
+        
+        .calculator-form {
+            background-color: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .result-box {
+            display: none;
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background-color: #e9f7fe;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-blue);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand d-flex align-items-center" href="../Home/index.html">
+                <img src="../Home/Assets/images/Logo.png" alt="AgriConnect Logo" height="150" class="me-1">
+                <span class="display-5 mb-0">AgriConnect</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Home/index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Resource/resource.html">Resources</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../AhilyaNagar/Ahilyanagar.html">Ahilyanagar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Recommendation/recommendation.html">Crop Recommendation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../Fertilizers/fertilizers.html">Fertilizers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Irrigation/irrigation.html">Irrigation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Equipment/equipment.html">Equipment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../About/about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section text-white text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-4 animate-fade-in">Nitrogen (N) Fertilizers</h1>
+            <p class="lead mb-4 animate-fade-in">Essential for leaf growth, chlorophyll production, and overall plant vigor</p>
+            <div class="hero-buttons">
+                <a href="#benefits" class="btn btn-light btn-lg me-3 animate-fade-in">Learn Benefits</a>
+                <a href="#calculator" class="btn btn-outline-light btn-lg animate-fade-in">Calculate Dosage</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Fertilizer Type Navigation -->
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="text-center mb-4">Fertilizer Types</h5>
+                        <div class="d-flex justify-content-center gap-3">
+                            <a href="nitrogen.html" class="btn btn-primary">
+                                <i class="fas fa-atom me-2"></i>Nitrogen (N)
+                            </a>
+                            <a href="phosphorus.html" class="btn btn-outline-success">
+                                <i class="fas fa-flask me-2"></i>Phosphorus (P)
+                            </a>
+                            <a href="potassium.html" class="btn btn-outline-warning">
+                                <i class="fas fa-leaf me-2"></i>Potassium (K)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+        <!-- Overview Section -->
+        <section id="overview" class="mb-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h2 class="section-title mb-4">Understanding Nitrogen</h2>
+                    <p class="lead">Nitrogen is the most abundant element in the Earth's atmosphere and a critical nutrient for plant growth.</p>
+                    <p>Plants absorb nitrogen primarily in the form of nitrate (NO₃⁻) and ammonium (NH₄⁺). It's a key component of amino acids, proteins, nucleic acids, and chlorophyll.</p>
+                    <div class="mt-4">
+                        <h5>Key Facts:</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Makes up 78% of Earth's atmosphere</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Essential for photosynthesis</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Promotes rapid vegetative growth</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Critical for protein synthesis</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="gallery-card">
+                        <img src="assets/img/nitrogen_cycle.jpg" alt="Nitrogen Cycle" class="img-fluid rounded">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section id="benefits" class="mb-5">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Benefits of Nitrogen Fertilizers</h2>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card benefit-card">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-leaf fa-3x text-success mb-3 service-icon"></i>
+                            <h5 class="card-title">Leaf Growth</h5>
+                            <p class="card-text">Stimulates the development of lush, green foliage and increases leaf size and number.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card benefit-card">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-seedling fa-3x text-primary mb-3 service-icon"></i>
+                            <h5 class="card-title">Plant Vigor</h5>
+                            <p class="card-text">Enhances overall plant health, growth rate, and resistance to environmental stress.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card benefit-card">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-flask fa-3x text-warning mb-3 service-icon"></i>
+                            <h5 class="card-title">Protein Synthesis</h5>
+                            <p class="card-text">Essential for the formation of amino acids and proteins, crucial for cell development.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card benefit-card">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-sun fa-3x text-info mb-3 service-icon"></i>
+                            <h5 class="card-title">Chlorophyll Production</h5>
+                            <p class="card-text">Increases the plant's ability to photosynthesize and convert sunlight into energy.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-card benefit-card">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-chart-line fa-3x text-danger mb-3 service-icon"></i>
+                            <h5 class="card-title">Yield Increase</h5>
+                            <p class="card-text">Can lead to significant increases in crop yield, especially in leafy vegetables and grains.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-card benefit-card">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-clock fa-3x text-secondary mb-3 service-icon"></i>
+                            <h5 class="card-title">Rapid Growth</h5>
+                            <p class="card-text">Accelerates the vegetative growth phase, allowing for earlier maturity in many crops.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deficiency Symptoms -->
+        <section id="deficiency" class="mb-5">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Nitrogen Deficiency Symptoms</h2>
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="gallery-card">
+                        <img src="assets/img/nitrogen_deficiency.jpg" alt="Nitrogen Deficiency" class="img-fluid rounded">
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="card shadow service-card">
+                        <div class="card-body p-4">
+                            <h4 class="mb-4">Common Signs of Nitrogen Deficiency:</h4>
+                            <ul class="list-unstyled">
+                                <li class="mb-3"><i class="fas fa-exclamation-triangle text-warning me-2"></i> <strong>Yellowing of older leaves</strong> - Starting from the tips and moving inward</li>
+                                <li class="mb-3"><i class="fas fa-exclamation-triangle text-warning me-2"></i> <strong>Stunted growth</strong> - Plants appear smaller than normal for their age</li>
+                                <li class="mb-3"><i class="fas fa-exclamation-triangle text-warning me-2"></i> <strong>Reduced leaf size</strong> - New leaves may be smaller than expected</li>
+                                <li class="mb-3"><i class="fas fa-exclamation-triangle text-warning me-2"></i> <strong>Delayed maturity</strong> - Plants take longer to reach flowering or fruiting stage</li>
+                                <li class="mb-3"><i class="fas fa-exclamation-triangle text-warning me-2"></i> <strong>Poor fruit development</strong> - Smaller fruits or reduced fruit set</li>
+                                <li class="mb-3"><i class="fas fa-exclamation-triangle text-warning me-2"></i> <strong>Reduced tillering</strong> - Fewer side shoots in grasses and cereals</li>
+                            </ul>
+                            <div class="alert alert-info mt-4">
+                                <i class="fas fa-info-circle me-2"></i> Nitrogen deficiency symptoms typically appear first in older leaves because nitrogen is a mobile nutrient that plants can redistribute from older to newer tissues.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Application Guide -->
+        <section id="application" class="mb-5">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Application Guidelines</h2>
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="card shadow service-card">
+                        <div class="card-body p-4">
+                            <h4 class="mb-4">Best Practices for Nitrogen Application:</h4>
+                            <div class="application-timeline">
+                                <div class="timeline-item">
+                                    <h5>Soil Testing</h5>
+                                    <p>Begin with a soil test to determine existing nitrogen levels and pH. This helps calculate the exact amount needed.</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h5>Split Applications</h5>
+                                    <p>Apply nitrogen in multiple doses throughout the growing season rather than all at once to prevent leaching and improve efficiency.</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h5>Proper Timing</h5>
+                                    <p>Apply during periods of active growth. For most crops, early application is crucial for establishing good vegetative growth.</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h5>Irrigation Management</h5>
+                                    <p>Ensure adequate moisture after application to help nitrogen move into the root zone, but avoid excessive irrigation that can cause leaching.</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h5>Monitoring</h5>
+                                    <p>Regularly check plant appearance and growth to adjust application rates as needed throughout the season.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="card shadow service-card">
+                        <div class="card-body p-4">
+                            <h4 class="mb-4">Common Nitrogen Fertilizer Types:</h4>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Type</th>
+                                            <th>N Content</th>
+                                            <th>Characteristics</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Urea</td>
+                                            <td>46% N</td>
+                                            <td>Most concentrated solid nitrogen fertilizer, needs to be incorporated</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ammonium Nitrate</td>
+                                            <td>34% N</td>
+                                            <td>Fast-acting, good for cool soils</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ammonium Sulfate</td>
+                                            <td>21% N</td>
+                                            <td>Contains sulfur, good for alkaline soils</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Calcium Nitrate</td>
+                                            <td>15% N</td>
+                                            <td>Contains calcium, good for acidic soils</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ammonium Phosphate</td>
+                                            <td>11-18% N</td>
+                                            <td>Combined N and P source</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Crop Recommendations -->
+        <section id="crops" class="mb-5">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Crop-Specific Recommendations</h2>
+            <div class="row">
+                <div class="col-12" data-aos="fade-up">
+                    <div class="card shadow service-card">
+                        <div class="card-body p-4">
+                            <div class="crop-recommendation" data-crop="cereals">
+                                <h4 class="d-flex justify-content-between align-items-center">
+                                    <span><i class="fas fa-wheat-awn me-2 text-warning"></i> Cereals (Rice, Wheat, Corn)</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </h4>
+                                <div class="crop-details">
+                                    <p>Cereals have high nitrogen requirements, especially during the vegetative growth stage.</p>
+                                    <ul>
+                                        <li><strong>Application Rate:</strong> 120-180 kg N/ha</li>
+                                        <li><strong>Timing:</strong> Split into 2-3 applications (basal, tillering, and panicle initiation)</li>
+                                        <li><strong>Special Notes:</strong> Avoid excessive nitrogen late in the season as it can delay maturity and increase lodging</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="crop-recommendation" data-crop="vegetables">
+                                <h4 class="d-flex justify-content-between align-items-center">
+                                    <span><i class="fas fa-carrot me-2 text-danger"></i> Vegetables</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </h4>
+                                <div class="crop-details">
+                                    <p>Leafy vegetables require more nitrogen than root vegetables.</p>
+                                    <ul>
+                                        <li><strong>Application Rate:</strong> 100-150 kg N/ha for leafy vegetables, 50-100 kg N/ha for root vegetables</li>
+                                        <li><strong>Timing:</strong> Apply at planting and as side-dressing during growth</li>
+                                        <li><strong>Special Notes:</strong> Reduce nitrogen application close to harvest to prevent nitrate accumulation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="crop-recommendation" data-crop="legumes">
+                                <h4 class="d-flex justify-content-between align-items-center">
+                                    <span><i class="fas fa-seedling me-2 text-success"></i> Legumes</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </h4>
+                                <div class="crop-details">
+                                    <p>Legumes can fix atmospheric nitrogen but may benefit from starter nitrogen.</p>
+                                    <ul>
+                                        <li><strong>Application Rate:</strong> 20-40 kg N/ha as starter</li>
+                                        <li><strong>Timing:</strong> Apply at planting only</li>
+                                        <li><strong>Special Notes:</strong> Excessive nitrogen can reduce nodulation and nitrogen fixation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="crop-recommendation" data-crop="fruits">
+                                <h4 class="d-flex justify-content-between align-items-center">
+                                    <span><i class="fas fa-apple-whole me-2 text-danger"></i> Fruit Trees</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </h4>
+                                <div class="crop-details">
+                                    <p>Fruit trees need balanced nutrition with moderate nitrogen.</p>
+                                    <ul>
+                                        <li><strong>Application Rate:</strong> 50-100 kg N/ha depending on age and productivity</li>
+                                        <li><strong>Timing:</strong> Apply in early spring and after harvest</li>
+                                        <li><strong>Special Notes:</strong> Avoid late-season applications that can delay dormancy and increase frost susceptibility</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="crop-recommendation" data-crop="nagar-nashik">
+                                <h4 class="d-flex justify-content-between align-items-center">
+                                    <span><i class="fas fa-map-marker-alt me-2 text-primary"></i> Nagar & Nashik District Crops</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </h4>
+                                <div class="crop-details">
+                                    <p>Commonly grown crops in Nagar and Nashik districts with specific nitrogen recommendations:</p>
+                                    <ul>
+                                        <li><strong>Grapes:</strong> 80-120 kg N/ha, split into 3-4 applications during growing season</li>
+                                        <li><strong>Sugarcane:</strong> 150-200 kg N/ha, split into 3-4 applications</li>
+                                        <li><strong>Onion:</strong> 100-120 kg N/ha, with 40% at planting and 60% as side-dressing</li>
+                                        <li><strong>Tomato:</strong> 120-150 kg N/ha, with 30% at planting and 70% as side-dressing</li>
+                                        <li><strong>Pomegranate:</strong> 60-80 kg N/ha, split into 2-3 applications</li>
+                                        <li><strong>Banana:</strong> 200-250 kg N/ha, split into 6-8 applications</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dosage Calculator -->
+        <section id="calculator" class="mb-5">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Nitrogen Dosage Calculator</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8" data-aos="fade-up">
+                    <div class="calculator-form">
+                        <form id="nitrogenCalculator">
+                            <div class="mb-3">
+                                <label for="cropType" class="form-label">Crop Type</label>
+                                <select class="form-select" id="cropType" required>
+                                    <option value="" selected disabled>Select crop type</option>
+                                    <option value="cereals">Cereals (Rice, Wheat, Corn)</option>
+                                    <option value="vegetables">Vegetables</option>
+                                    <option value="legumes">Legumes</option>
+                                    <option value="fruits">Fruit Trees</option>
+                                    <option value="grapes">Grapes</option>
+                                    <option value="sugarcane">Sugarcane</option>
+                                    <option value="onion">Onion</option>
+                                    <option value="tomato">Tomato</option>
+                                    <option value="pomegranate">Pomegranate</option>
+                                    <option value="banana">Banana</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="areaUnit" class="form-label">Area Unit</label>
+                                <select class="form-select" id="areaUnit" required>
+                                    <option value="hectares" selected>Hectares</option>
+                                    <option value="gunthas">Gunthas</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="fieldSize" class="form-label">Field Size</label>
+                                <input type="number" class="form-control" id="fieldSize" min="0.1" step="0.1" required>
+                                <div class="form-text">Enter the size in the selected unit (1 hectare = 24.71 gunthas)</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="soilType" class="form-label">Soil Type</label>
+                                <select class="form-select" id="soilType" required>
+                                    <option value="" selected disabled>Select soil type</option>
+                                    <option value="sandy">Sandy</option>
+                                    <option value="loamy">Loamy</option>
+                                    <option value="clay">Clay</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="fertilizerType" class="form-label">Fertilizer Type</label>
+                                <select class="form-select" id="fertilizerType" required>
+                                    <option value="" selected disabled>Select fertilizer type</option>
+                                    <option value="urea">Urea (46% N)</option>
+                                    <option value="ammoniumNitrate">Ammonium Nitrate (34% N)</option>
+                                    <option value="ammoniumSulfate">Ammonium Sulfate (21% N)</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Calculate Dosage</button>
+                        </form>
+                        
+                        <div class="result-box" id="resultBox">
+                            <h4 class="mb-3">Recommended Application</h4>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><strong>Total Nitrogen Needed:</strong> <span id="totalNitrogen">0</span> kg N</p>
+                                    <p><strong>Fertilizer Amount:</strong> <span id="fertilizerAmount">0</span> kg</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><strong>Application Schedule:</strong></p>
+                                    <ul id="applicationSchedule" class="list-unstyled">
+                                        <!-- Will be populated by JavaScript -->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h5 class="mb-3">AgriConnect Data System</h5>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+        
+        // Crop recommendation toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const cropRecommendations = document.querySelectorAll('.crop-recommendation');
+            
+            cropRecommendations.forEach(crop => {
+                crop.querySelector('h4').addEventListener('click', function() {
+                    // Toggle active class
+                    crop.classList.toggle('active');
+                    
+                    // Toggle chevron icon
+                    const icon = this.querySelector('.fa-chevron-down');
+                    icon.style.transform = crop.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
+                });
+            });
+            
+            // Nitrogen Calculator
+            const calculatorForm = document.getElementById('nitrogenCalculator');
+            const resultBox = document.getElementById('resultBox');
+            
+            calculatorForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const cropType = document.getElementById('cropType').value;
+                const areaUnit = document.getElementById('areaUnit').value;
+                const fieldSize = parseFloat(document.getElementById('fieldSize').value);
+                const soilType = document.getElementById('soilType').value;
+                const fertilizerType = document.getElementById('fertilizerType').value;
+                
+                // Convert gunthas to hectares if needed
+                let fieldSizeInHectares = fieldSize;
+                if (areaUnit === 'gunthas') {
+                    fieldSizeInHectares = fieldSize / 24.71;
+                }
+                
+                // Calculate nitrogen requirements based on crop type
+                let nitrogenPerHectare = 0;
+                let applicationSchedule = [];
+                
+                switch(cropType) {
+                    case 'cereals':
+                        nitrogenPerHectare = 150;
+                        applicationSchedule = [
+                            '40% at planting (basal)',
+                            '30% at tillering stage',
+                            '30% at panicle initiation'
+                        ];
+                        break;
+                    case 'vegetables':
+                        nitrogenPerHectare = 120;
+                        applicationSchedule = [
+                            '30% at planting',
+                            '40% as side-dressing during growth',
+                            '30% before flowering'
+                        ];
+                        break;
+                    case 'legumes':
+                        nitrogenPerHectare = 30;
+                        applicationSchedule = [
+                            '100% as starter at planting'
+                        ];
+                        break;
+                    case 'fruits':
+                        nitrogenPerHectare = 80;
+                        applicationSchedule = [
+                            '50% in early spring',
+                            '50% after harvest'
+                        ];
+                        break;
+                    case 'grapes':
+                        nitrogenPerHectare = 100;
+                        applicationSchedule = [
+                            '30% at bud break',
+                            '40% during flowering and fruit set',
+                            '30% during berry development'
+                        ];
+                        break;
+                    case 'sugarcane':
+                        nitrogenPerHectare = 175;
+                        applicationSchedule = [
+                            '20% at planting',
+                            '30% at 45 days after planting',
+                            '30% at 90 days after planting',
+                            '20% at 120 days after planting'
+                        ];
+                        break;
+                    case 'onion':
+                        nitrogenPerHectare = 110;
+                        applicationSchedule = [
+                            '40% at planting',
+                            '30% at 30 days after planting',
+                            '30% at 60 days after planting'
+                        ];
+                        break;
+                    case 'tomato':
+                        nitrogenPerHectare = 135;
+                        applicationSchedule = [
+                            '30% at planting',
+                            '40% during flowering and fruit set',
+                            '30% during fruit development'
+                        ];
+                        break;
+                    case 'pomegranate':
+                        nitrogenPerHectare = 70;
+                        applicationSchedule = [
+                            '40% in early spring before flowering',
+                            '30% during fruit development',
+                            '30% after harvest'
+                        ];
+                        break;
+                    case 'banana':
+                        nitrogenPerHectare = 225;
+                        applicationSchedule = [
+                            '20% at planting',
+                            '20% at 2 months after planting',
+                            '20% at 4 months after planting',
+                            '20% at 6 months after planting',
+                            '20% at 8 months after planting'
+                        ];
+                        break;
+                }
+                
+                // Adjust for soil type
+                if (soilType === 'sandy') {
+                    nitrogenPerHectare *= 1.2; // 20% more for sandy soils
+                } else if (soilType === 'clay') {
+                    nitrogenPerHectare *= 0.9; // 10% less for clay soils
+                }
+                
+                // Calculate total nitrogen needed
+                const totalNitrogen = nitrogenPerHectare * fieldSizeInHectares;
+                
+                // Calculate fertilizer amount based on fertilizer type
+                let fertilizerAmount = 0;
+                let nitrogenPercentage = 0;
+                
+                switch(fertilizerType) {
+                    case 'urea':
+                        nitrogenPercentage = 46;
+                        break;
+                    case 'ammoniumNitrate':
+                        nitrogenPercentage = 34;
+                        break;
+                    case 'ammoniumSulfate':
+                        nitrogenPercentage = 21;
+                        break;
+                }
+                
+                fertilizerAmount = (totalNitrogen / nitrogenPercentage) * 100;
+                
+                // Display results
+                document.getElementById('totalNitrogen').textContent = Math.round(totalNitrogen);
+                document.getElementById('fertilizerAmount').textContent = Math.round(fertilizerAmount);
+                
+                // Populate application schedule
+                const scheduleList = document.getElementById('applicationSchedule');
+                scheduleList.innerHTML = '';
+                
+                applicationSchedule.forEach(item => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<i class="fas fa-check-circle text-success me-2"></i>${item}`;
+                    scheduleList.appendChild(li);
+                });
+                
+                // Show result box
+                resultBox.style.display = 'block';
+                
+                // Scroll to results
+                resultBox.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriConnect Data System - Phosphorus Fertilizers</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../Home/css/homestyle.css">
+    <style>
+        .nutrient-chart {
+            height: 300px;
+            margin-bottom: 2rem;
+        }
+        
+        .benefit-card {
+            transition: transform 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .application-timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .application-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: var(--primary-orange);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 20px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--primary-orange);
+        }
+        
+        .crop-recommendation {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .crop-recommendation:hover {
+            background-color: rgba(255, 165, 52, 0.1);
+        }
+        
+        .crop-details {
+            display: none;
+            padding: 1rem;
+            border-left: 3px solid var(--primary-orange);
+            margin-top: 1rem;
+        }
+        
+        .crop-recommendation.active .crop-details {
+            display: block;
+        }
+        
+        .crop-recommendation.active {
+            background-color: rgba(255, 165, 52, 0.05);
+        }
+        
+        .calculator-form {
+            background-color: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .result-box {
+            display: none;
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background-color: #e9f7fe;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-blue);
+        }
+        
+        .soil-ph-chart {
+            height: 300px;
+            margin: 2rem 0;
+        }
+        
+        .interaction-card {
+            border-left: 4px solid var(--primary-orange);
+            transition: all 0.3s ease;
+        }
+        
+        .interaction-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand d-flex align-items-center" href="../Home/index.html">
+                <img src="../Home/Assets/images/Logo.png" alt="AgriConnect Logo" height="150" class="me-1">
+                <span class="display-5 mb-0">AgriConnect</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Home/index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Resource/resource.html">Resources</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../AhilyaNagar/Ahilyanagar.html">Ahilyanagar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Recommendation/recommendation.html">Crop Recommendation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../Fertilizers/fertilizers.html">Fertilizers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Irrigation/irrigation.html">Irrigation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Equipment/equipment.html">Equipment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../About/about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section text-white text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-4 animate-fade-in">Phosphorus (P) Fertilizers</h1>
+            <p class="lead mb-4 animate-fade-in">Essential for root development, energy transfer, and flowering</p>
+            <div class="hero-buttons">
+                <a href="#benefits" class="btn btn-light btn-lg me-3 animate-fade-in">Learn Benefits</a>
+                <a href="#calculator" class="btn btn-outline-light btn-lg animate-fade-in">Calculate Dosage</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Fertilizer Type Navigation -->
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="text-center mb-4">Fertilizer Types</h5>
+                        <div class="d-flex justify-content-center gap-3">
+                            <a href="nitrogen.html" class="btn btn-outline-primary">
+                                <i class="fas fa-atom me-2"></i>Nitrogen (N)
+                            </a>
+                            <a href="phosphorus.html" class="btn btn-success">
+                                <i class="fas fa-flask me-2"></i>Phosphorus (P)
+                            </a>
+                            <a href="potassium.html" class="btn btn-outline-warning">
+                                <i class="fas fa-leaf me-2"></i>Potassium (K)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+        <!-- Overview Section -->
+        <section id="overview" class="mb-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h2 class="section-title mb-4">Understanding Phosphorus</h2>
+                    <p class="lead">Phosphorus is a vital nutrient that plays a crucial role in plant energy processes and root development.</p>
+                    <p>Plants absorb phosphorus primarily in the form of orthophosphate (H₂PO₄⁻ or HPO₄²⁻). It's a key component of ATP (adenosine triphosphate), the energy currency of cells, and is essential for DNA and RNA formation.</p>
+                    <div class="mt-4">
+                        <h5>Key Facts:</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Critical for energy transfer in plants</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Promotes root growth and development</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Essential for flower and fruit formation</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Important for early seedling vigor</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="gallery-card">
+                        <img src="assets/img/phosphorous_cylcle.jpg" alt="Phosphorus Cycle" class="img-fluid rounded">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section id="benefits" class="mb-5">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Benefits of Phosphorus Fertilizers</h2>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card benefit-card">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-root fa-3x text-primary mb-3 service-icon"></i>
+                            <h5 class="card-title">Root Development</h5>
+                            <p class="card-text">Stimulates the growth of strong, healthy root systems that improve nutrient and water uptake.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card benefit-card">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-bolt fa-3x text-warning mb-3 service-icon"></i>
+                            <h5 class="card-title">Energy Transfer</h5>
+                            <p class="card-text">Facilitates the transfer and storage of energy within plant cells through ATP formation.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card benefit-card">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-flower fa-3x text-success mb-3 service-icon"></i>
+                            <h5 class="card-title">Flower Formation</h5>
+                            <p class="card-text">Promotes the development of flowers and fruits, essential for reproductive success.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card benefit-card">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-dna fa-3x text-info mb-3 service-icon"></i>
+                            <h5 class="card-title">DNA & RNA Synthesis</h5>
+                            <p class="card-text">Essential for the formation of genetic material and protein synthesis in plants.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-card benefit-card">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-seedling fa-3x text-danger mb-3 service-icon"></i>
+                            <h5 class="card-title">Early Growth</h5>
+                            <p class="card-text">Improves seedling vigor and establishment, leading to better crop stands.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-card benefit-card">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-shield-alt fa-3x text-secondary mb-3 service-icon"></i>
+                            <h5 class="card-title">Stress Resistance</h5>
+                            <p class="card-text">Enhances plant resistance to environmental stresses like drought and cold.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deficiency Symptoms -->
+        <section id="deficiency" class="mb-5">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Phosphorus Deficiency Symptoms</h2>
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="gallery-card">
+                        <img src="assets/img/nitrogen_deficiency.jpg" alt="Phosphorus Deficiency" class="img-fluid rounded">
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="card shadow service-card">
+                        <div class="card-body p-4">
+                            <h4 class="mb-4">Common Signs of Phosphorus Deficiency:</h4>
+                            <ul class="list-unstyled">
+                                <li class="mb-3"><i class="fas fa-exclamation-triangle text-warning me-2"></i> <strong>Purple or reddish discoloration</strong> - Often seen on older leaves</li>
+                                <li class="mb-3"><i class="fas fa-exclamation-triangle text-warning me-2"></i> <strong>Stunted growth</strong> - Plants appear smaller than normal for their age</li>
+                                <li class="mb-3"><i class="fas fa-exclamation-triangle text-warning me-2"></i> <strong>Delayed maturity</strong> - Plants take longer to reach flowering or fruiting stage</li>
+                                <li class="mb-3"><i class="fas fa-exclamation-triangle text-warning me-2"></i> <strong>Poor root development</strong> - Reduced root growth and branching</li>
+                                <li class="mb-3"><i class="fas fa-exclamation-triangle text-warning me-2"></i> <strong>Reduced flower production</strong> - Fewer flowers or delayed flowering</li>
+                                <li class="mb-3"><i class="fas fa-exclamation-triangle text-warning me-2"></i> <strong>Small fruits or seeds</strong> - Reduced size and quality of harvested products</li>
+                            </ul>
+                            <div class="alert alert-info mt-4">
+                                <i class="fas fa-info-circle me-2"></i> Phosphorus deficiency symptoms typically appear first in older leaves because phosphorus is a mobile nutrient that plants can redistribute from older to newer tissues.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Soil pH Interaction -->
+        <section id="soil-ph" class="mb-5">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Soil pH and Phosphorus Availability</h2>
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="card shadow service-card">
+                        <div class="card-body p-4">
+                            <h4 class="mb-4">Understanding pH Effects on Phosphorus:</h4>
+                            <p>Soil pH significantly affects phosphorus availability to plants. Phosphorus is most available in soils with a pH between 6.0 and 7.0.</p>
+                            
+                            <div class="interaction-card p-3 mb-3">
+                                <h5><i class="fas fa-flask text-danger me-2"></i> Acidic Soils (pH < 6.0)</h5>
+                                <p>In acidic soils, phosphorus tends to form insoluble compounds with aluminum and iron, making it less available to plants.</p>
+                            </div>
+                            
+                            <div class="interaction-card p-3 mb-3">
+                                <h5><i class="fas fa-flask text-success me-2"></i> Neutral Soils (pH 6.0-7.0)</h5>
+                                <p>In neutral soils, phosphorus is most available to plants, as it remains in soluble forms that can be easily taken up by roots.</p>
+                            </div>
+                            
+                            <div class="interaction-card p-3">
+                                <h5><i class="fas fa-flask text-warning me-2"></i> Alkaline Soils (pH > 7.0)</h5>
+                                <p>In alkaline soils, phosphorus forms insoluble compounds with calcium, reducing its availability to plants.</p>
+                            </div>
+                            
+                            <div class="alert alert-warning mt-4">
+                                <i class="fas fa-exclamation-triangle me-2"></i> If your soil pH is outside the optimal range, consider adjusting it before applying phosphorus fertilizers to maximize efficiency.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="gallery-card">
+                        <img src="assets/img/phos_chart.jpg" alt="Phosphorus Availability by pH" class="img-fluid rounded">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Application Guide -->
+        <section id="application" class="mb-5">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Application Guidelines</h2>
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="card shadow service-card">
+                        <div class="card-body p-4">
+                            <h4 class="mb-4">Best Practices for Phosphorus Application:</h4>
+                            <div class="application-timeline">
+                                <div class="timeline-item">
+                                    <h5>Soil Testing</h5>
+                                    <p>Begin with a soil test to determine existing phosphorus levels and pH. This helps calculate the exact amount needed.</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h5>Placement</h5>
+                                    <p>Apply phosphorus near the seed or plant roots, as it doesn't move easily through the soil (low mobility).</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h5>Timing</h5>
+                                    <p>Apply before planting or early in the growing season, as phosphorus is most beneficial during early growth stages.</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h5>Incorporation</h5>
+                                    <p>Incorporate phosphorus fertilizers into the soil to prevent surface runoff and improve root access.</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h5>pH Management</h5>
+                                    <p>Maintain soil pH between 6.0 and 7.0 for optimal phosphorus availability.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="card shadow service-card">
+                        <div class="card-body p-4">
+                            <h4 class="mb-4">Common Phosphorus Fertilizer Types:</h4>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Type</th>
+                                            <th>P Content</th>
+                                            <th>Characteristics</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Triple Superphosphate</td>
+                                            <td>46% P₂O₅</td>
+                                            <td>High phosphorus, no nitrogen or potassium</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Diammonium Phosphate (DAP)</td>
+                                            <td>46% P₂O₅</td>
+                                            <td>Contains nitrogen, good starter fertilizer</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Monoammonium Phosphate (MAP)</td>
+                                            <td>52% P₂O₅</td>
+                                            <td>Contains nitrogen, good for high pH soils</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Rock Phosphate</td>
+                                            <td>30% P₂O₅</td>
+                                            <td>Slow-release, organic option</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bone Meal</td>
+                                            <td>15% P₂O₅</td>
+                                            <td>Organic, slow-release phosphorus source</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Crop Recommendations -->
+        <section id="crops" class="mb-5">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Crop-Specific Recommendations</h2>
+            <div class="row">
+                <div class="col-12" data-aos="fade-up">
+                    <div class="card shadow service-card">
+                        <div class="card-body p-4">
+                            <div class="crop-recommendation" data-crop="cereals">
+                                <h4 class="d-flex justify-content-between align-items-center">
+                                    <span><i class="fas fa-wheat-awn me-2 text-warning"></i> Cereals (Rice, Wheat, Corn)</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </h4>
+                                <div class="crop-details">
+                                    <p>Cereals benefit from phosphorus, especially during early growth stages.</p>
+                                    <ul>
+                                        <li><strong>Application Rate:</strong> 60-90 kg P₂O₅/ha</li>
+                                        <li><strong>Timing:</strong> Apply at planting or before</li>
+                                        <li><strong>Placement:</strong> Band application near the seed</li>
+                                        <li><strong>Special Notes:</strong> Early phosphorus application is crucial for tillering and root development</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="crop-recommendation" data-crop="legumes">
+                                <h4 class="d-flex justify-content-between align-items-center">
+                                    <span><i class="fas fa-seedling me-2 text-success"></i> Legumes</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </h4>
+                                <div class="crop-details">
+                                    <p>Legumes have moderate phosphorus requirements but benefit greatly from proper application.</p>
+                                    <ul>
+                                        <li><strong>Application Rate:</strong> 40-60 kg P₂O₅/ha</li>
+                                        <li><strong>Timing:</strong> Apply at planting</li>
+                                        <li><strong>Placement:</strong> Band application near the seed</li>
+                                        <li><strong>Special Notes:</strong> Adequate phosphorus improves nodulation and nitrogen fixation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="crop-recommendation" data-crop="vegetables">
+                                <h4 class="d-flex justify-content-between align-items-center">
+                                    <span><i class="fas fa-carrot me-2 text-danger"></i> Vegetables</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </h4>
+                                <div class="crop-details">
+                                    <p>Vegetables vary in phosphorus needs based on type and growth stage.</p>
+                                    <ul>
+                                        <li><strong>Application Rate:</strong> 80-120 kg P₂O₅/ha for fruiting vegetables, 40-80 kg P₂O₅/ha for root vegetables</li>
+                                        <li><strong>Timing:</strong> Apply before planting and as needed during growth</li>
+                                        <li><strong>Placement:</strong> Broadcast and incorporate before planting</li>
+                                        <li><strong>Special Notes:</strong> Fruiting vegetables benefit from phosphorus during flowering and fruit set</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="crop-recommendation" data-crop="fruits">
+                                <h4 class="d-flex justify-content-between align-items-center">
+                                    <span><i class="fas fa-apple-whole me-2 text-danger"></i> Fruit Trees</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </h4>
+                                <div class="crop-details">
+                                    <p>Fruit trees need balanced phosphorus for flower bud formation and fruit development.</p>
+                                    <ul>
+                                        <li><strong>Application Rate:</strong> 40-80 kg P₂O₅/ha depending on age and productivity</li>
+                                        <li><strong>Timing:</strong> Apply in early spring before bud break</li>
+                                        <li><strong>Placement:</strong> Broadcast under the canopy and incorporate</li>
+                                        <li><strong>Special Notes:</strong> Adequate phosphorus improves flower bud formation and fruit quality</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="crop-recommendation" data-crop="nagar-nashik">
+                                <h4 class="d-flex justify-content-between align-items-center">
+                                    <span><i class="fas fa-map-marker-alt me-2 text-primary"></i> Nagar & Nashik District Crops</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </h4>
+                                <div class="crop-details">
+                                    <p>Commonly grown crops in Nagar and Nashik districts with specific phosphorus recommendations:</p>
+                                    <ul>
+                                        <li><strong>Grapes:</strong> 60-80 kg P₂O₅/ha, apply before bud break and during flowering</li>
+                                        <li><strong>Sugarcane:</strong> 80-100 kg P₂O₅/ha, apply at planting and during tillering</li>
+                                        <li><strong>Onion:</strong> 50-70 kg P₂O₅/ha, apply at planting and incorporate well</li>
+                                        <li><strong>Tomato:</strong> 70-90 kg P₂O₅/ha, apply at planting and during flowering</li>
+                                        <li><strong>Pomegranate:</strong> 40-60 kg P₂O₅/ha, apply in early spring before flowering</li>
+                                        <li><strong>Banana:</strong> 60-80 kg P₂O₅/ha, apply at planting and during sucker development</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dosage Calculator -->
+        <section id="calculator" class="mb-5">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Phosphorus Dosage Calculator</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8" data-aos="fade-up">
+                    <div class="calculator-form">
+                        <form id="phosphorusCalculator">
+                            <div class="mb-3">
+                                <label for="cropType" class="form-label">Crop Type</label>
+                                <select class="form-select" id="cropType" required>
+                                    <option value="" selected disabled>Select crop type</option>
+                                    <option value="cereals">Cereals (Rice, Wheat, Corn)</option>
+                                    <option value="legumes">Legumes</option>
+                                    <option value="vegetables">Vegetables</option>
+                                    <option value="fruits">Fruit Trees</option>
+                                    <option value="grapes">Grapes</option>
+                                    <option value="sugarcane">Sugarcane</option>
+                                    <option value="onion">Onion</option>
+                                    <option value="tomato">Tomato</option>
+                                    <option value="pomegranate">Pomegranate</option>
+                                    <option value="banana">Banana</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="areaUnit" class="form-label">Area Unit</label>
+                                <select class="form-select" id="areaUnit" required>
+                                    <option value="hectares" selected>Hectares</option>
+                                    <option value="gunthas">Gunthas</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="fieldSize" class="form-label">Field Size</label>
+                                <input type="number" class="form-control" id="fieldSize" min="0.1" step="0.1" required>
+                                <div class="form-text">Enter the size in the selected unit (1 hectare = 24.71 gunthas)</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="soilPh" class="form-label">Soil pH</label>
+                                <input type="number" class="form-control" id="soilPh" min="4" max="10" step="0.1" required>
+                                <div class="form-text">Enter a value between 4.0 and 10.0</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="fertilizerType" class="form-label">Fertilizer Type</label>
+                                <select class="form-select" id="fertilizerType" required>
+                                    <option value="" selected disabled>Select fertilizer type</option>
+                                    <option value="tripleSuperphosphate">Triple Superphosphate (46% P₂O₅)</option>
+                                    <option value="dap">Diammonium Phosphate (46% P₂O₅)</option>
+                                    <option value="map">Monoammonium Phosphate (52% P₂O₅)</option>
+                                    <option value="rockPhosphate">Rock Phosphate (30% P₂O₅)</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Calculate Dosage</button>
+                        </form>
+                        
+                        <div class="result-box" id="resultBox">
+                            <h4 class="mb-3">Recommended Application</h4>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><strong>Total Phosphorus Needed:</strong> <span id="totalPhosphorus">0</span> kg P₂O₅</p>
+                                    <p><strong>Fertilizer Amount:</strong> <span id="fertilizerAmount">0</span> kg</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><strong>Application Method:</strong></p>
+                                    <ul id="applicationMethod" class="list-unstyled">
+                                        <!-- Will be populated by JavaScript -->
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="alert alert-info mt-3" id="phAlert">
+                                <!-- Will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h5 class="mb-3">AgriConnect Data System</h5>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+        
+        // Crop recommendation toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const cropRecommendations = document.querySelectorAll('.crop-recommendation');
+            
+            cropRecommendations.forEach(crop => {
+                crop.querySelector('h4').addEventListener('click', function() {
+                    // Toggle active class
+                    crop.classList.toggle('active');
+                    
+                    // Toggle chevron icon
+                    const icon = this.querySelector('.fa-chevron-down');
+                    icon.style.transform = crop.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
+                });
+            });
+            
+            // Phosphorus Calculator
+            const calculatorForm = document.getElementById('phosphorusCalculator');
+            const resultBox = document.getElementById('resultBox');
+            const phAlert = document.getElementById('phAlert');
+            
+            calculatorForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const cropType = document.getElementById('cropType').value;
+                const areaUnit = document.getElementById('areaUnit').value;
+                const fieldSize = parseFloat(document.getElementById('fieldSize').value);
+                const soilPh = parseFloat(document.getElementById('soilPh').value);
+                const fertilizerType = document.getElementById('fertilizerType').value;
+                
+                // Convert gunthas to hectares if needed
+                let fieldSizeInHectares = fieldSize;
+                if (areaUnit === 'gunthas') {
+                    fieldSizeInHectares = fieldSize / 24.71;
+                }
+                
+                // Calculate phosphorus requirements based on crop type
+                let phosphorusPerHectare = 0;
+                let applicationMethod = [];
+                
+                switch(cropType) {
+                    case 'cereals':
+                        phosphorusPerHectare = 75;
+                        applicationMethod = [
+                            'Band application near the seed at planting',
+                            'Incorporate into the soil before planting'
+                        ];
+                        break;
+                    case 'legumes':
+                        phosphorusPerHectare = 50;
+                        applicationMethod = [
+                            'Band application near the seed at planting',
+                            'Incorporate into the soil before planting'
+                        ];
+                        break;
+                    case 'vegetables':
+                        phosphorusPerHectare = 100;
+                        applicationMethod = [
+                            'Broadcast and incorporate before planting',
+                            'Side-dress during growth for fruiting vegetables'
+                        ];
+                        break;
+                    case 'fruits':
+                        phosphorusPerHectare = 60;
+                        applicationMethod = [
+                            'Broadcast under the canopy in early spring',
+                            'Incorporate into the soil'
+                        ];
+                        break;
+                    case 'grapes':
+                        phosphorusPerHectare = 70;
+                        applicationMethod = [
+                            'Apply before bud break',
+                            'Incorporate into the soil',
+                            'Additional application during flowering'
+                        ];
+                        break;
+                    case 'sugarcane':
+                        phosphorusPerHectare = 90;
+                        applicationMethod = [
+                            'Apply at planting',
+                            'Incorporate into the soil',
+                            'Additional application during tillering'
+                        ];
+                        break;
+                    case 'onion':
+                        phosphorusPerHectare = 60;
+                        applicationMethod = [
+                            'Apply at planting',
+                            'Incorporate well into the soil',
+                            'Band application near the seed'
+                        ];
+                        break;
+                    case 'tomato':
+                        phosphorusPerHectare = 80;
+                        applicationMethod = [
+                            'Apply at planting',
+                            'Incorporate into the soil',
+                            'Additional application during flowering'
+                        ];
+                        break;
+                    case 'pomegranate':
+                        phosphorusPerHectare = 50;
+                        applicationMethod = [
+                            'Apply in early spring before flowering',
+                            'Broadcast under the canopy',
+                            'Incorporate into the soil'
+                        ];
+                        break;
+                    case 'banana':
+                        phosphorusPerHectare = 70;
+                        applicationMethod = [
+                            'Apply at planting',
+                            'Incorporate into the soil',
+                            'Additional application during sucker development'
+                        ];
+                        break;
+                }
+                
+                // Adjust for soil pH
+                let phAdjustment = 1.0;
+                let phMessage = '';
+                
+                if (soilPh < 6.0) {
+                    phAdjustment = 1.3; // 30% more for acidic soils
+                    phMessage = 'Your soil is acidic. Consider applying lime to raise pH before applying phosphorus for better efficiency.';
+                } else if (soilPh > 7.5) {
+                    phAdjustment = 1.2; // 20% more for alkaline soils
+                    phMessage = 'Your soil is alkaline. Consider using acid-forming fertilizers or elemental sulfur to lower pH for better phosphorus availability.';
+                } else {
+                    phMessage = 'Your soil pH is in the optimal range for phosphorus availability.';
+                }
+                
+                // Calculate total phosphorus needed
+                const totalPhosphorus = phosphorusPerHectare * fieldSizeInHectares * phAdjustment;
+                
+                // Calculate fertilizer amount based on fertilizer type
+                let fertilizerAmount = 0;
+                let phosphorusPercentage = 0;
+                
+                switch(fertilizerType) {
+                    case 'tripleSuperphosphate':
+                        phosphorusPercentage = 46;
+                        break;
+                    case 'dap':
+                        phosphorusPercentage = 46;
+                        break;
+                    case 'map':
+                        phosphorusPercentage = 52;
+                        break;
+                    case 'rockPhosphate':
+                        phosphorusPercentage = 30;
+                        break;
+                }
+                
+                fertilizerAmount = (totalPhosphorus / phosphorusPercentage) * 100;
+                
+                // Display results
+                document.getElementById('totalPhosphorus').textContent = Math.round(totalPhosphorus);
+                document.getElementById('fertilizerAmount').textContent = Math.round(fertilizerAmount);
+                
+                // Populate application method
+                const methodList = document.getElementById('applicationMethod');
+                methodList.innerHTML = '';
+                
+                applicationMethod.forEach(item => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<i class="fas fa-check-circle text-success me-2"></i>${item}`;
+                    methodList.appendChild(li);
+                });
+                
+                // Display pH alert
+                phAlert.innerHTML = `<i class="fas fa-info-circle me-2"></i>${phMessage}`;
+                
+                // Show result box
+                resultBox.style.display = 'block';
+                
+                // Scroll to results
+                resultBox.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html> 

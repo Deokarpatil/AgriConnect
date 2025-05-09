@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriConnect Data System - Resources</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/resource.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        :root {
+            --primary-orange: #ffa534;
+            --primary-blue: #0077ff;
+            --soft-beige: #fff8f0;
+            --dark-gray: #333333;
+            --medium-gray: #666666;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: var(--white) !important;
+            padding: 0.5rem 0;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .navbar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255,165,52,0.05) 0%, rgba(255,140,0,0.05) 100%);
+            animation: pulse 3s infinite;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            margin-right: 0;
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        .navbar-brand img {
+            height: 150px;
+            object-fit: contain;
+            transition: all 0.3s ease;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .navbar-brand:hover img {
+            transform: scale(1.05) rotate(5deg);
+            animation: none;
+        }
+
+        .navbar-brand span {
+            color: var(--primary-blue);
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-left: -0.75rem;
+            line-height: 1;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand:hover span {
+            color: var(--primary-orange);
+            transform: translateX(5px);
+        }
+
+        .nav-link {
+            color: var(--dark-gray) !important;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem !important;
+            position: relative;
+            transition: all 0.3s ease;
+            animation: fadeInRight 1s ease-out;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-orange);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::before {
+            width: 80%;
+        }
+
+        .nav-link.active::before {
+            width: 80%;
+        }
+
+        .navbar-toggler {
+            animation: fadeInRight 1s ease-out;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-toggler:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.5rem 1rem;
+            }
+            
+            .navbar-brand {
+                gap: 0.15rem;
+            }
+            
+            .navbar-brand img {
+                height: 120px;
+                animation: none;
+            }
+            
+            .navbar-brand span {
+                font-size: 2.2rem;
+                margin-left: -0.5rem;
+            }
+            
+            .nav-link {
+                animation: fadeInUp 1s ease-out;
+            }
+            
+            .navbar-toggler {
+                animation: fadeInUp 1s ease-out;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="display-3 fw-bold mb-4">Agricultural Resources</h1>
+            <p class="lead mb-0">Comprehensive guides and information to support your farming journey</p>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand d-flex align-items-center" href="../Home/index.html">
+                <img src="../Home/Assets/images/Logo.png" alt="AgriConnect Logo" height="150" class="me-1">
+                <span class="display-5 mb-0">AgriConnect</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Home/index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="resource.html">Resources</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../AhilyaNagar/Ahilyanagar.html">Ahilyanagar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Recommendation/recommendation.html">Crop Recommendation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Fertilizers/fertilizers.html">Fertilizers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Irrigation/irrigation.html">Irrigation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Equipment/equipment.html">Equipment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../About/about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Comprehensive Resources Section -->
+    <section class="comprehensive-resources py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Comprehensive Farming Resources</h2>
+            <div class="row g-4">
+                <!-- Crop Management -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-seedling text-success me-2"></i>Crop Management</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="../crop/onion.html" class="text-decoration-none">Onion Farming Guide</a></li>
+                                <li><a href="../crop/maize.html" class="text-decoration-none">Maize Farming Guide</a></li>
+                                <li><a href="../crop/sugarcane.html" class="text-decoration-none">Sugarcane Farming Guide</a></li>
+                                <li><a href="../crop/tomato.html" class="text-decoration-none">Tomato Farming Guide</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soil Health -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-mountain text-warning me-2"></i>Soil Health</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="../Soil_Health/soil_healt.html" class="text-decoration-none">Soil Testing Methods</a></li>
+                                <li><a href="../Soil_Health/soil_healt.html#soil-conservation" class="text-decoration-none">Soil Conservation</a></li>
+                                <li><a href="../Soil_Health/soil_healt.html#organic-matter" class="text-decoration-none">Organic Matter Management</a></li>
+                                <li><a href="../Soil_Health/soil_healt.html#erosion-prevention" class="text-decoration-none">Soil Erosion Prevention</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fertilizer Management -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-flask text-danger me-2"></i>Fertilizer Management</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="../Fertilizers/nitrogen.html" class="text-decoration-none">Nitrogen Fertilizers</a></li>
+                                <li><a href="../Fertilizers/phosphorus.html" class="text-decoration-none">Phosphorus Fertilizers</a></li>
+                                <li><a href="../Fertilizers/potassium.html" class="text-decoration-none">Potassium Fertilizers</a></li>
+                                <li><a href="../Fertilizers/npk_fertilizers.html" class="text-decoration-none">NPK Fertilizer Guide</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Water Management -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-tint text-info me-2"></i>Water Management</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="../Irrigation/drip-irrigation.html" class="text-decoration-none">Drip Irrigation System</a></li>
+                                <li><a href="../Irrigation/sprinkler-irrigation.html" class="text-decoration-none">Sprinkler Irrigation System</a></li>
+                                <li><a href="../Irrigation/furrow-irrigation.html" class="text-decoration-none">Furrow Irrigation System</a></li>
+                                <li><a href="../Irrigation/irrigation.html" class="text-decoration-none">Irrigation Overview</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technology & Innovation -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-microchip text-primary me-2"></i>Smart Farming Tools</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="../Equipment.html#tractors" class="text-decoration-none">Modern Tractors & Implements</a></li>
+                                <li><a href="../Equipment.html#harvesting" class="text-decoration-none">Harvesting Equipment</a></li>
+                                <li><a href="../Equipment.html#planting" class="text-decoration-none">Planting Equipment</a></li>
+                                <li><a href="../Equipment.html#automation" class="text-decoration-none">Automated Farming Systems</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendations -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-chart-line text-secondary me-2"></i>Recommendations</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="../Recommendation/recommendation.html" class="text-decoration-none">Crop Recommendations</a></li>
+                                <li><a href="../Fertilizers/fertilizers.html" class="text-decoration-none">Fertilizer Recommendations</a></li>
+                                <li><a href="../Irrigation/irrigation.html" class="text-decoration-none">Irrigation Recommendations</a></li>
+            
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+        <!-- Resource Categories -->
+        <section class="resource-categories mb-5">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <h3>Blog & News</h3>
+                        <p>Latest agricultural trends, research findings, and industry updates</p>
+                        <a href="../Blog-news/blog_news.html" class="btn btn-outline-primary">Explore</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h3>Fertilizer Guides</h3>
+                        <p>Detailed information on different types of fertilizers and their applications</p>
+                        <a href="../Fertilizers/fertilizers.html" class="btn btn-outline-primary">Explore</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-bug"></i>
+                        </div>
+                        <h3>Pesticide Information</h3>
+                        <p>Comprehensive guides on pest control and pesticide management</p>
+                        <a href="../Fertilizers/npk_fertilizers.html" class="btn btn-outline-primary">Explore</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <h3>Irrigation Techniques</h3>
+                        <p>Efficient water management strategies for different crops and regions</p>
+                        <a href="../Irrigation/irrigation.html" class="btn btn-outline-primary">Explore</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Sustainable Farming</h3>
+                        <p>Environmentally friendly practices for long-term agricultural success</p>
+                        <a href="../crop/tomato.html" class="btn btn-outline-primary">Explore</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <h3>Government Schemes</h3>
+                        <p>Information on subsidies, grants, and support programs for farmers</p>
+                        <a href="government-schemes.html" class="btn btn-outline-primary">Explore</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Resources -->
+        <section class="featured-resources mb-5">
+            <h2 class="section-title text-center mb-4">Featured Resources</h2>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="featured-card">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="../Resource/assets/smart_irri.jpg" class="img-fluid rounded-start" alt="Featured Resource">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <span class="badge bg-success mb-2">New</span>
+                                    <h5 class="card-title">Smart Irrigation Technologies</h5>
+                                    <p class="card-text">Discover the latest innovations in irrigation technology that can help you save water and improve crop yields.</p>
+                                    <a href="../Irrigation/irrigation.html" class="btn btn-sm btn-outline-primary">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="featured-card">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="../Resource/assets/organic_fert.jpg" class="img-fluid rounded-start" alt="Featured Resource">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <span class="badge bg-info mb-2">Popular</span>
+                                    <h5 class="card-title">Organic Fertilizer Guide</h5>
+                                    <p class="card-text">Learn how to make and use organic fertilizers to improve soil health and crop quality naturally.</p>
+                                    <a href="../Fertilizers/fertilizers.html" class="btn btn-sm btn-outline-primary">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+     
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h5 class="mb-3">AgriConnect Data System</h5>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="../js/script.js"></script>
+</body>
+</html>

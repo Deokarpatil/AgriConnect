@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahilyanagar Agricultural Profile</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/AhilyanagarStyle.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand d-flex align-items-center" href="../Home/index.html">
+                <img src="../Home/Assets/images/Logo.png" alt="AgriConnect Logo" height="150" class="me-1">
+                <span class="display-5 mb-0">AgriConnect</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Home/index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Resource/resource.html">Resources</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="Ahilyanagar.html">Ahilyanagar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Recommendation/recommendation.html">Crop Recommendation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Fertilizers/fertilizers.html">Fertilizers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Irrigation/irrigation.html">Irrigation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Equipment/equipment.html">Equipment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../About/about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="ahilyanagar-header">
+        <h1>Ahilyanagar Agricultural Profile</h1>
+        <p class="subtitle">Comprehensive Agricultural Information for Ahilyanagar District</p>
+    </div>
+
+    <div class="ahilyanagar-container">
+        <div class="taluka-selector">
+            <select id="talukaSelect" onchange="showTalukaInfo()">
+                <option value="">Select a Taluka</option>
+                <option value="Rahata">Rahata</option>
+                <option value="Sangamner">Sangamner</option>
+                <option value="Kopargaon">Kopargaon</option>
+                <option value="Shrirampur">Shrirampur</option>
+                <option value="Nevasa">Nevasa</option>
+                <option value="Shevgaon">Shevgaon</option>
+                <option value="Pathardi">Pathardi</option>
+                <option value="Nagar">Nagar</option>
+                <option value="Rahuri">Rahuri</option>
+                <option value="Shrigonda">Shrigonda</option>
+                <option value="Karjat">Karjat</option>
+                <option value="Jamkhed">Jamkhed</option>
+                <option value="Ahmednagar">Ahmednagar</option>
+                <option value="Akole">Akole</option>
+                <option value="Parner">Parner</option>
+            </select>
+        </div>
+
+        <div id="talukaInfo" class="taluka-info">
+            <div id="majorCrops" class="major-crops-section"></div>
+            <div id="cropGrid" class="crop-grid"></div>
+            <div id="talukaInsights" class="taluka-insights"></div>
+        </div>
+
+        <!-- District Map Section -->
+        <div class="district-map-section text-center my-4">
+            <img src="Maharashtra State Districts Along With their District Maps.jpeg" alt="Ahilyanagar District Taluka Map" class="img-fluid rounded shadow district-map-img" style="max-width: 600px; width: 100%; height: auto; border: 3px solid #198754;">
+            <div class="map-caption mt-2 text-muted">Ahilyanagar District and its Talukas</div>
+        </div>
+
+        <!-- Agriculture in Ahilyanagar Section -->
+        <nav class="ahilyanagar-anchor-nav mb-3">
+            <a href="#agriculture" class="anchor-link"><i class="fa-solid fa-wheat-awn"></i> Agriculture</a>
+            <a href="#major-crops" class="anchor-link"><i class="fa-solid fa-seedling"></i> Major Crops</a>
+            <a href="#irrigation" class="anchor-link"><i class="fa-solid fa-droplet"></i> Irrigation</a>
+            <a href="#soil-climate" class="anchor-link"><i class="fa-solid fa-mountain-sun"></i> Soil & Climate</a>
+            <a href="#history" class="anchor-link"><i class="fa-solid fa-landmark"></i> History</a>
+        </nav>
+        <section id="agriculture" class="agri-section bg-light-green py-4 px-3 mb-4 rounded-4 position-relative">
+            <div class="row align-items-center mb-4">
+                <div class="col-md-8">
+                    <h1 class="display-4 fw-bold text-success mb-3"><i class="fa-solid fa-wheat-awn"></i> Agriculture in Ahilyanagar</h1>
+                    <p class="lead" style="font-size:1.2rem;">Ahilyanagar is a very large district in the center of Maharashtra. It has many villages and a large number of farmers. Agriculture (शेती) is the main occupation of the people here. Because the climate is hot and dry, and rainfall is low and irregular, farming here is very challenging. Still, the farmers of Ahilyanagar work very hard and grow many types of crops with great care and planning.</p>
+                </div>
+                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                    <div class="bg-white shadow rounded-4 p-4 text-center w-100">
+                        <div class="mb-2">
+                            <span class="badge bg-success fs-6 mb-2"><i class="fa-solid fa-cloud-rain"></i> Avg. Rainfall</span>
+                            <div class="fw-bold fs-4 text-success">400–600 mm</div>
+                        </div>
+                        <div class="mb-2">
+                            <span class="badge bg-primary fs-6 mb-2"><i class="fa-solid fa-seedling"></i> Irrigated Land</span>
+                            <div class="fw-bold fs-4 text-primary">26%</div>
+                        </div>
+                        <div>
+                            <span class="badge bg-warning text-dark fs-6 mb-2"><i class="fa-solid fa-temperature-high"></i> Summer Temp</span>
+                            <div class="fw-bold fs-4 text-warning">40°C+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="alert alert-success shadow-sm mb-4" role="alert">
+                <i class="fa-solid fa-quote-left fa-lg me-2"></i>
+                <span class="fst-italic">“Even in tough conditions, Ahilyanagar's farmers grow hope with every seed.”</span>
+                <i class="fa-solid fa-quote-right fa-lg ms-2"></i>
+            </div>
+            <p>In earlier days, only traditional crops like jowar (ज्वारी), bajra (बाजरी), and pulses like tur (तूर) and moong (मुग) were grown. These crops do not need a lot of water and can survive in dry weather. But in the last few decades, with the help of irrigation projects (सिंचन योजना), modern farming methods, and government schemes, farmers started growing high-value crops like sugarcane (ऊस), onion (कांदा), pomegranate (डाळिंब), grapes (द्राक्ष), and more. Now, Ahilyanagar is becoming a leading agricultural district in Maharashtra.</p>
+        </section>
+        <section id="major-crops" class="agri-section bg-white py-4 px-3 mb-4 rounded-4">
+            <h2 class="fw-bold text-success mb-3"><i class="fa-solid fa-seedling"></i> Major Crops Grown in Ahilyanagar</h2>
+            <p>Ahilyanagar has a very diverse cropping pattern. This means many different types of crops are grown in different seasons.</p>
+            <h3 class="text-brown mt-4"><i class="fa-solid fa-wheat-awn"></i> 1. Food Grains and Pulses (धान्य आणि कडधान्य)</h3>
+            <p>Jowar (ज्वारी) and Bajra (बाजरी) are the main grains. They are hardy and grow even if there is less water.</p>
+            <p>Tur (तूर डाळ) and Moong (मुग डाळ) are important pulses.</p>
+            <p>These crops are mostly grown during the rainy season and do not need much care.</p>
+            <h3 class="text-brown mt-4"><i class="fa-solid fa-indian-rupee-sign"></i> 2. Cash Crops (नगदी पिके)</h3>
+            <p>Cotton (कापूस) is grown widely in medium black soil.</p>
+            <p>Soybean (सोयाबीन) is also becoming popular among farmers.</p>
+            <p>These crops give farmers good income when sold in the market.</p>
+            <h3 class="text-brown mt-4"><i class="fa-solid fa-cube"></i> 3. Sugarcane (ऊस)</h3>
+            <p>Sugarcane is one of the most important crops in Ahilyanagar.</p>
+            <p>It needs a lot of water, so it is grown in places with good irrigation.</p>
+            <p>The district has many co-operative sugar factories, which buy sugarcane from farmers and help them earn better income.</p>
+            <h3 class="text-brown mt-4"><i class="fa-solid fa-carrot"></i> 4. Vegetables (भाजीपाला)</h3>
+            <p>Onion (कांदा) is a major vegetable. Ahilyanagar is one of the top onion-producing areas in Maharashtra.</p>
+            <p>Other vegetables: Tomato (टोमॅटो), Brinjal (वांगी), Chilli (मिरची), Peas (मटार).</p>
+            <p>These are grown under irrigation, especially near wells and canals.</p>
+            <h3 class="text-brown mt-4"><i class="fa-solid fa-apple-whole"></i> 5. Fruits (फळपिके)</h3>
+            <p>Important fruits grown here: Pomegranate (डाळिंब), Mango (आंबा), Guava (पेरू), Chikoo (चिकू), Kagzi Lime (कागदी लिंबू), Grapes (द्राक्ष).</p>
+            <p>These crops give higher profits if taken care of properly.</p>
+            <p>Many farmers now grow orchards with drip irrigation and proper guidance from KVK and agricultural universities.</p>
+        </section>
+        <section id="irrigation" class="agri-section bg-light-green py-4 px-3 mb-4 rounded-4">
+            <h2 class="fw-bold text-success mb-3"><i class="fa-solid fa-droplet"></i> Irrigation and Farming Methods</h2>
+            <p>Ahilyanagar gets about 400–600 mm of rain each year, which is not enough for all crops. So, irrigation (सिंचन) is very important.</p>
+            <p>Only about 26% of the farmland has irrigation.</p>
+            <p>Most of the irrigation comes from wells and borewells (विहीर, बोअरवेल).</p>
+            <p>Some areas also use canals (कालवे) from the Pravara, Mula, and Godavari projects.</p>
+            <p>Farmers use drip systems, sprinklers, and lift irrigation (लिफ्ट सिंचन).</p>
+            <p>Many still use traditional methods, but modern tools like tractors, threshers, and sprays are now common.</p>
+        </section>
+        <section id="soil-climate" class="agri-section bg-white py-4 px-3 mb-4 rounded-4">
+            <h2 class="fw-bold text-success mb-3"><i class="fa-solid fa-mountain-sun"></i> Soil and Climate of Ahilyanagar</h2>
+            <h3 class="text-brown mt-4"><i class="fa-solid fa-sun"></i> Climate (हवामान)</h3>
+            <p>Summers: Very hot (March to May), temperature goes above 40°C.</p>
+            <p>Monsoon: June to September. Rain is not regular.</p>
+            <p>Winters: Cool and dry.</p>
+            <h3 class="text-brown mt-4"><i class="fa-solid fa-layer-group"></i> Soil Types (मातीचे प्रकार)</h3>
+            <p><b>Shallow grey sandy soil (हलक्या राखाडी मातीतली माती):</b></p>
+            <ul>
+                <li>Covers the largest area.</li>
+                <li>Not very good at holding water.</li>
+                <li>Good for drought crops like jowar, bajra, pulses.</li>
+            </ul>
+            <p><b>Medium to deep black cotton soil (मध्यम ते खोल काळी माती):</b></p>
+            <ul>
+                <li>Holds moisture well.</li>
+                <li>Found mostly in irrigated areas.</li>
+                <li>Best for sugarcane, cotton, pomegranate.</li>
+            </ul>
+        </section>
+        <section id="history" class="agri-section bg-light-green py-4 px-3 mb-4 rounded-4">
+            <h2 class="fw-bold text-success mb-3"><i class="fa-solid fa-landmark"></i> Historical Growth and Achievements</h2>
+            <h3 class="text-brown mt-4"><i class="fa-solid fa-hourglass-start"></i> Traditional Farming</h3>
+            <p>In olden days, farmers mainly grew crops for their family.</p>
+            <p>Very little use of machines or fertilizers.</p>
+            <h3 class="text-brown mt-4"><i class="fa-solid fa-rocket"></i> Green Revolution and Irrigation Expansion</h3>
+            <p>After the 1960s, farmers got better seeds and fertilizers.</p>
+            <p>Mula Dam, Pravara Canal and other projects brought water to many villages.</p>
+            <p>This helped farmers grow wheat, sugarcane, and cotton.</p>
+            <h3 class="text-brown mt-4"><i class="fa-solid fa-people-group"></i> Co-operative Movement</h3>
+            <p>Many co-operative sugar factories started in this region.</p>
+            <p>Farmers became members and got support for seeds, fertilizers, and money.</p>
+            <p>Dairy co-operatives (दुग्ध सहकारी संस्था) also helped improve income.</p>
+            <h3 class="text-brown mt-4"><i class="fa-solid fa-graduation-cap"></i> Education and Research</h3>
+            <p>Mahatma Phule Krishi Vidyapeeth (MPKV), Rahuri is a major university in Ahilyanagar.</p>
+            <p>It helps farmers with:</p>
+            <ul>
+                <li>New seeds</li>
+                <li>Fruit and vegetable research</li>
+                <li>Organic farming and drip irrigation</li>
+            </ul>
+            <p>Krishi Vigyan Kendra (KVK), Babhaleshwar gives farmer training, demo farms, and on-field guidance.</p>
+        </section>
+
+        <div id="loading" class="loading"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h5 class="mb-3">AgriConnect Data System</h5>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Load both data sources
+        let cropData = {};
+        let talukaData = {};
+
+        async function loadData() {
+            try {
+                const [cropResponse, talukaResponse] = await Promise.all([
+                    fetch('ahilyanagar_taluka_crop_data.json'),
+                    fetch('taluka_data.json')
+                ]);
+                cropData = await cropResponse.json();
+                talukaData = await talukaResponse.json();
+                // Enable select and add event listener after data is loaded
+                const select = document.getElementById('talukaSelect');
+                select.disabled = false;
+                select.addEventListener('change', showTalukaInfo);
+                // If a taluka is already selected (e.g. after reload), show info
+                if (select.value) showTalukaInfo();
+            } catch (error) {
+                console.error('Error loading data:', error);
+            }
+        }
+
+        function showTalukaInfo() {
+            const select = document.getElementById('talukaSelect');
+            const talukaInfo = document.getElementById('talukaInfo');
+            const loading = document.getElementById('loading');
+            const cropGrid = document.getElementById('cropGrid');
+            const majorCrops = document.getElementById('majorCrops');
+            const talukaInsights = document.getElementById('talukaInsights');
+
+            if (!select.value) {
+                talukaInfo.style.display = 'none';
+                return;
+            }
+
+            loading.style.display = 'block';
+            talukaInfo.style.display = 'none';
+
+            // Map 'Nagar' and 'Ahmednagar' to 'Ahmednagar_Taluka' for insights
+            let insightKey = select.value;
+            if (insightKey === 'Nagar' || insightKey === 'Ahmednagar') {
+                insightKey = 'Ahmednagar_Taluka';
+            }
+
+            const taluka = cropData[select.value];
+            const talukaInsight = talukaData.Ahmednagar_District && talukaData.Ahmednagar_District[insightKey];
+
+            if (!taluka && !talukaInsight) {
+                loading.style.display = 'none';
+                return;
+            }
+
+            // Display major crops if available
+            if (taluka && taluka.major_crops) {
+                majorCrops.innerHTML = `
+                    <h3>Major Crops in ${select.value}</h3>
+                    <div class="major-crops-list">
+                        ${taluka.major_crops.map(crop => `
+                            <span class="major-crop-tag">${crop}</span>
+                        `).join('')}
+                    </div>
+                `;
+            } else {
+                majorCrops.innerHTML = '';
+            }
+
+            // Display crops if available
+            if (taluka && taluka.crops) {
+                cropGrid.innerHTML = taluka.crops.map(crop => `
+                    <div class="ahilyanagar-crop-card">
+                        <h3 class="ahilyanagar-crop-title">${crop.crop}</h3>
+                        <div class="ahilyanagar-crop-info">
+                            <p class="ahilyanagar-crop-production">Production: ${crop.production_tonnes.toLocaleString()} tonnes</p>
+                            ${crop.area_percent ? `<p class="ahilyanagar-crop-area">Area: ${crop.area_percent}%</p>` : ''}
+                        </div>
+                        <div class="ahilyanagar-crop-why">
+                            <h4>Why Important:</h4>
+                            <p>${crop.why_important}</p>
+                        </div>
+                        <div class="ahilyanagar-crop-advantages">
+                            <h4>Advantages:</h4>
+                            <ul>
+                                ${crop.advantages.map(adv => `<li>${adv}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                cropGrid.innerHTML = '';
+            }
+
+            // Display taluka insights if available
+            if (talukaInsight) {
+                talukaInsights.innerHTML = `
+                    <div class="taluka-insights-card">
+                        <h3>Agricultural Insights for ${select.value}</h3>
+                        <div class="insights-grid">
+                            <div class="insight-section">
+                                <h4>Importance</h4>
+                                <p>${talukaInsight.Importance}</p>
+                            </div>
+                            <div class="insight-section">
+                                <h4>Advantages</h4>
+                                <p>${talukaInsight.Advantages}</p>
+                            </div>
+                            <div class="insight-section">
+                                <h4>Geography</h4>
+                                <p>${talukaInsight.Geography}</p>
+                            </div>
+                            <div class="insight-section">
+                                <h4>Irrigation Sources</h4>
+                                <p>${talukaInsight.Irrigation_Sources}</p>
+                            </div>
+                            <div class="insight-section">
+                                <h4>Challenges</h4>
+                                <p>${talukaInsight.Challenges}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                talukaInsights.innerHTML = '';
+            }
+
+            loading.style.display = 'none';
+            talukaInfo.style.display = 'block';
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Disable select until data is loaded
+            document.getElementById('talukaSelect').disabled = true;
+            loadData();
+        });
+    </script>
+</body>
+</html>

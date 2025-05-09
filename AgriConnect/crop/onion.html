@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onion Cultivation - AgriConnect</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/onion.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand d-flex align-items-center" href="../Home/index.html">
+                <img src="../Home/Assets/images/Logo.png" alt="AgriConnect Logo" height="150" class="me-1">
+                <span class="display-5 mb-0">AgriConnect</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Home/index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Resource/resource.html">Resources</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../AhilyaNagar/Ahilyanagar.html">Ahilyanagar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../Recommendation/recommendation.html">Crop Recommendation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Fertilizers/fertilizers.html">Fertilizers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Irrigation/irrigation.html">Irrigation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Equipment/equipment.html">Equipment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../About/about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold text-white mb-4">Onion Cultivation</h1>
+                    <p class="lead text-white mb-4">Master the art of onion farming with our comprehensive guide on cultivation practices, irrigation methods, and crop protection.</p>
+                    <div class="hero-buttons">
+                        <a href="#cultivation-guide" class="btn btn-primary btn-lg me-3">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="../crop/assets/img/onion_field.jpg" alt="Onion Field" class="img-fluid rounded-3 hero-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <section class="stats-section py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <i class="fas fa-seedling"></i>
+                        <h3>Growth Period</h3>
+                        <p>90-120 days</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <i class="fas fa-tint"></i>
+                        <h3>Water Requirement</h3>
+                        <p>500-700mm</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <i class="fas fa-temperature-high"></i>
+                        <h3>Temperature</h3>
+                        <p>13-35°C</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <i class="fas fa-mountain"></i>
+                        <h3>Soil pH</h3>
+                        <p>6.0-7.0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cultivation Guide -->
+    <section id="cultivation-guide" class="cultivation-section py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Cultivation Guide</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="guide-card">
+                        <div class="guide-icon">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        <h3>Land Preparation</h3>
+                        <ul>
+                            <li>Deep ploughing (20-25 cm)</li>
+                            <li>Fine tilth preparation</li>
+                            <li>Raised bed formation</li>
+                            <li>Proper drainage</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="guide-card">
+                        <div class="guide-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Planting</h3>
+                        <ul>
+                            <li>Seed selection</li>
+                            <li>Nursery preparation</li>
+                            <li>Transplanting</li>
+                            <li>Spacing management</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="guide-card">
+                        <div class="guide-icon">
+                            <i class="fas fa-hand-holding-water"></i>
+                        </div>
+                        <h3>Water Management</h3>
+                        <ul>
+                            <li>Drip irrigation</li>
+                            <li>Sprinkler irrigation</li>
+                            <li>Furrow irrigation</li>
+                            <li>Water scheduling</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fertilizer Management -->
+    <section class="fertilizer-section py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Fertilizer Management</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="fertilizer-content">
+                        <h3 class="mb-4">Recommended Dosage</h3>
+                        <div class="nutrient-table">
+                            <div class="nutrient-row">
+                                <span>Nitrogen (N)</span>
+                                <span>60-80 kg/ha</span>
+                            </div>
+                            <div class="nutrient-row">
+                                <span>Phosphorus (P)</span>
+                                <span>40-60 kg/ha</span>
+                            </div>
+                            <div class="nutrient-row">
+                                <span>Potassium (K)</span>
+                                <span>40-60 kg/ha</span>
+                            </div>
+                            <div class="nutrient-row">
+                                <span>Zinc (Zn)</span>
+                                <span>5 kg/ha</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="../crop/assets/img/ferti_appli.jpg" alt="Fertilizer Application" class="img-fluid rounded-3">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Disease Management -->
+    <section class="disease-section py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Disease Management</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="disease-card">
+                        <h4>Purple Blotch</h4>
+                        <p>Symptoms: Purple spots on leaves, yellowing</p>
+                        <div class="treatment">
+                            <h5>Treatment:</h5>
+                            <ul>
+                                <li>Use resistant varieties</li>
+                                <li>Proper spacing</li>
+                                <li>Fungicide application</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="disease-card">
+                        <h4>Downy Mildew</h4>
+                        <p>Symptoms: White powdery growth on leaves</p>
+                        <div class="treatment">
+                            <h5>Treatment:</h5>
+                            <ul>
+                                <li>Good air circulation</li>
+                                <li>Fungicide spray</li>
+                                <li>Crop rotation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="disease-card">
+                        <h4>Neck Rot</h4>
+                        <p>Symptoms: Soft rot at neck region</p>
+                        <div class="treatment">
+                            <h5>Treatment:</h5>
+                            <ul>
+                                <li>Proper curing</li>
+                                <li>Storage management</li>
+                                <li>Disease-free seed</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Harvesting -->
+    <section class="harvesting-section py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Harvesting Guide</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="harvesting-content">
+                        <h3>When to Harvest</h3>
+                        <ul class="harvest-checklist">
+                            <li><i class="fas fa-check"></i> Crop age: 90-120 days</li>
+                            <li><i class="fas fa-check"></i> 50-75% tops fallen</li>
+                            <li><i class="fas fa-check"></i> Bulb size achieved</li>
+                            <li><i class="fas fa-check"></i> Dry weather conditions</li>
+                        </ul>
+                        <h3 class="mt-4">Harvesting Methods</h3>
+                        <ul class="harvest-methods">
+                            <li><i class="fas fa-cut"></i> Manual harvesting</li>
+                            <li><i class="fas fa-tractor"></i> Mechanical harvesting</li>
+                            <li><i class="fas fa-tasks"></i> Proper curing</li>
+                            <li><i class="fas fa-truck-loading"></i> Storage management</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="../crop/assets/img/harvesting.jpg" alt="Onion Harvesting" class="img-fluid rounded-3">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Frequently Asked Questions</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    What is the best time to plant onions?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    The best time to plant onions depends on your region. Generally, plant in early spring for summer harvest or late summer for winter harvest.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    How often should I water my onion crop?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Water onions regularly, keeping the soil moist but not waterlogged. Reduce watering as bulbs mature to prevent rot.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    What are common onion pests and how to control them?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Common pests include thrips, onion maggots, and cutworms. Control methods include crop rotation, proper spacing, and organic pesticides.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h5 class="mb-3">AgriConnect Data System</h5>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

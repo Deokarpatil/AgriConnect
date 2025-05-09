@@ -1,0 +1,641 @@
+/* Variables */
+:root {
+    --primary-color: #2ecc71;
+    --secondary-color: #3498db;
+    --accent-color: #27ae60;
+    --dark-color: #343a40;
+    --light-color: #f8f9fa;
+    --text-color: #2c3e50;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    padding-top: 80px;
+}
+
+.section-title {
+    position: relative;
+    padding-bottom: 1rem;
+    margin-bottom: 3rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../crop/assets/img/sugarcane_field.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 0;
+    margin-bottom: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(46, 204, 113, 0.2), rgba(52, 152, 219, 0.2));
+    z-index: 1;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-section h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: fadeInDown 1s ease-out;
+}
+
+.hero-section p {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero-image {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    border-radius: 15px;
+}
+
+.hero-image:hover {
+    transform: scale(1.02);
+}
+
+.hero-buttons .btn {
+    padding: 12px 30px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.hero-buttons .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Stats Section */
+.stats-section {
+    background-color: #f8f9fa;
+    padding: 60px 0;
+    position: relative;
+}
+
+.stats-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(to right, #2ecc71, #3498db);
+}
+
+.stat-card {
+    text-align: center;
+    padding: 30px 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: #2ecc71;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-card:hover::before {
+    transform: scaleX(1);
+}
+
+.stat-card i {
+    font-size: 2.5em;
+    color: #2ecc71;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover i {
+    transform: scale(1.1);
+}
+
+.stat-card h3 {
+    font-size: 1.2em;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.stat-card p {
+    font-size: 1.1em;
+    color: #7f8c8d;
+    margin: 0;
+}
+
+/* Cultivation Guide */
+.guide-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.guide-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: #2ecc71;
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.guide-card:hover {
+    transform: translateY(-5px);
+}
+
+.guide-card:hover::before {
+    transform: scaleY(1);
+}
+
+.guide-icon {
+    font-size: 2em;
+    color: #2ecc71;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.guide-card:hover .guide-icon {
+    transform: scale(1.1);
+}
+
+.guide-card h3 {
+    color: #2c3e50;
+    font-size: 1.3em;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.guide-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.guide-card ul li {
+    padding: 8px 0;
+    color: #7f8c8d;
+    position: relative;
+    padding-left: 25px;
+    transition: transform 0.3s ease;
+}
+
+.guide-card ul li:hover {
+    transform: translateX(5px);
+}
+
+.guide-card ul li::before {
+    content: '•';
+    color: #2ecc71;
+    position: absolute;
+    left: 0;
+    font-size: 1.2em;
+}
+
+/* Fertilizer Section */
+.fertilizer-section {
+    background-color: #f8f9fa;
+    padding: 80px 0;
+}
+
+.fertilizer-content {
+    padding: 30px;
+}
+
+.nutrient-table {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.nutrient-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #e9ecef;
+    transition: background-color 0.3s ease;
+}
+
+.nutrient-row:hover {
+    background-color: #f8f9fa;
+}
+
+.nutrient-row:last-child {
+    border-bottom: none;
+}
+
+.nutrient-row span:first-child {
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.nutrient-row span:last-child {
+    color: #2ecc71;
+    font-weight: 600;
+}
+
+/* Disease Management */
+.disease-card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.disease-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: #2ecc71;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.disease-card:hover {
+    transform: translateY(-5px);
+}
+
+.disease-card:hover::before {
+    transform: scaleX(1);
+}
+
+.disease-card h4 {
+    color: #2ecc71;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.disease-card p {
+    color: #7f8c8d;
+    margin-bottom: 15px;
+}
+
+.treatment h5 {
+    color: #2c3e50;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.treatment ul {
+    list-style: none;
+    padding: 0;
+}
+
+.treatment ul li {
+    padding: 5px 0;
+    color: #7f8c8d;
+    position: relative;
+    padding-left: 20px;
+    transition: transform 0.3s ease;
+}
+
+.treatment ul li:hover {
+    transform: translateX(5px);
+}
+
+.treatment ul li::before {
+    content: '✓';
+    color: #2ecc71;
+    position: absolute;
+    left: 0;
+}
+
+/* Harvesting Section */
+.harvesting-section {
+    background-color: #f8f9fa;
+    padding: 80px 0;
+}
+
+.harvesting-content {
+    padding: 30px;
+}
+
+.harvest-checklist, .harvest-methods {
+    list-style: none;
+    padding: 0;
+}
+
+.harvest-checklist li, .harvest-methods li {
+    padding: 10px 0;
+    color: #7f8c8d;
+    position: relative;
+    padding-left: 30px;
+    transition: transform 0.3s ease;
+}
+
+.harvest-checklist li:hover, .harvest-methods li:hover {
+    transform: translateX(5px);
+}
+
+.harvest-checklist li i, .harvest-methods li i {
+    color: #2ecc71;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* FAQ Section */
+.faq-section {
+    padding: 80px 0;
+    background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+}
+
+.accordion-item {
+    border: none;
+    margin-bottom: 15px;
+    border-radius: 10px !important;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.accordion-button {
+    background-color: white;
+    color: #2c3e50;
+    font-weight: 500;
+    padding: 20px;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: rgba(0, 0, 0, 0.125);
+}
+
+.accordion-body {
+    padding: 20px;
+    color: #7f8c8d;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(to right, #2c3e50, #34495e);
+}
+
+.social-links a {
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-3px);
+    color: var(--primary-color) !important;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 60px 0;
+    }
+    
+    .stat-card {
+        margin-bottom: 20px;
+    }
+    
+    .guide-card, .disease-card {
+        margin-bottom: 20px;
+    }
+    
+    .fertilizer-content, .harvesting-content {
+        margin-bottom: 30px;
+    }
+    
+    .hero-buttons .btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+/* Custom Colors */
+:root {
+    --primary-color: #2ecc71;
+    --secondary-color: #3498db;
+    --accent-color: #27ae60;
+    --text-color: #2c3e50;
+    --light-bg: #f8f9fa;
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    padding: 12px 30px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #27ae60;
+    border-color: #27ae60;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+}
+
+.btn-outline-light {
+    border-width: 2px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Navbar Styling */
+.navbar {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.02);
+}
+
+.navbar-brand img {
+    transition: all 0.3s ease;
+}
+
+.navbar-brand:hover img {
+    transform: scale(1.05);
+}
+
+.nav-link {
+    color: #2c3e50 !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #2ecc71;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: #2ecc71 !important;
+}
+
+.navbar-toggler {
+    border: none;
+    padding: 0.5rem;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar-toggler-icon {
+    background-image: none;
+    position: relative;
+    width: 30px;
+    height: 2px;
+    background-color: #2c3e50;
+    display: inline-block;
+    vertical-align: middle;
+    transition: all 0.3s ease;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 2px;
+    background-color: #2c3e50;
+    transition: all 0.3s ease;
+}
+
+.navbar-toggler-icon::before {
+    top: -8px;
+}
+
+.navbar-toggler-icon::after {
+    bottom: -8px;
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+    background-color: transparent;
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+    transform: rotate(-45deg);
+    bottom: 0;
+}
+
+/* Custom Colors */
+:root {
+    --primary-color: #2ecc71;
+    --secondary-color: #3498db;
+    --accent-color: #27ae60;
+    --text-color: #2c3e50;
+    --light-bg: #f8f9fa;
+} 

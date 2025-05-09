@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriConnect - Organic Fertilizers</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../Home/css/homestyle.css">
+    <style>
+        :root {
+            --primary-orange: #ffa534;
+            --primary-blue: #0077ff;
+            --soft-beige: #fff8f0;
+            --dark-gray: #333333;
+            --medium-gray: #666666;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('../assets/img/pattern.png');
+            opacity: 0.1;
+        }
+
+        .hero-buttons {
+            margin-top: 2rem;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* Service Cards */
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+        }
+
+        /* Section Titles */
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #2ecc71, #27ae60);
+            border-radius: 2px;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            background-color: #f8f9fa;
+            padding: 50px 0;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            color: #2ecc71;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-item:hover .benefit-icon {
+            transform: scale(1.1);
+        }
+
+        /* Application Guide */
+        .application-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .application-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .list-group-item {
+            border: none;
+            padding: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .list-group-item:hover {
+            background-color: #f8f9fa;
+            transform: translateX(5px);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 80px 0;
+            }
+            
+            .benefit-item {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand d-flex align-items-center" href="../Home/index.html">
+                <img src="../Home/Assets/images/Logo.png" alt="AgriConnect Logo" height="150" class="me-1">
+                <span class="display-5 mb-0">AgriConnect</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Home/index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Resource/resource.html">Resources</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../AhilyaNagar/Ahilyanagar.html">Ahilyanagar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Recommendation/recommendation.html">Crop Recommendation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../Fertilizers/fertilizers.html">Fertilizers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Irrigation/irrigation.html">Irrigation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Equipment/equipment.html">Equipment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../About/about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section text-white text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-4 animate-fade-in">Organic Fertilizers</h1>
+            <p class="lead mb-4 animate-fade-in">Natural solutions for sustainable farming and soil health</p>
+            <div class="hero-buttons">
+                <a href="#benefits" class="btn btn-light btn-lg me-3 animate-fade-in">Learn Benefits</a>
+                <a href="#application" class="btn btn-outline-light btn-lg animate-fade-in">Application Guide</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+        <!-- Introduction -->
+        <section class="mb-5">
+            <h2 class="section-title text-center">Understanding Organic Fertilizers</h2>
+            <p class="lead text-center">Organic fertilizers are derived from natural sources and provide essential nutrients to plants while improving soil structure and promoting sustainable agriculture.</p>
+        </section>
+
+        <!-- Types of Organic Fertilizers -->
+        <section class="mb-5">
+            <h3 class="section-title text-center">Common Types of Organic Fertilizers</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-leaf fa-3x text-success mb-3 service-icon"></i>
+                            <h5 class="card-title">Compost</h5>
+                            <p class="card-text">Decomposed organic matter rich in nutrients and beneficial microorganisms.</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success"></i> Improves soil structure</li>
+                                <li><i class="fas fa-check text-success"></i> Rich in nutrients</li>
+                                <li><i class="fas fa-check text-success"></i> Enhances water retention</li>
+                                <li><i class="fas fa-check text-success"></i> NPK ratio: 2-1-1</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-seedling fa-3x text-success mb-3 service-icon"></i>
+                            <h5 class="card-title">Animal Manure</h5>
+                            <p class="card-text">Nutrient-rich waste from farm animals, excellent for soil fertility.</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success"></i> High in nitrogen</li>
+                                <li><i class="fas fa-check text-success"></i> Improves soil texture</li>
+                                <li><i class="fas fa-check text-success"></i> Must be properly aged</li>
+                                <li><i class="fas fa-check text-success"></i> NPK ratio: 3-2-1</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-bone fa-3x text-success mb-3 service-icon"></i>
+                            <h5 class="card-title">Bone Meal</h5>
+                            <p class="card-text">Ground animal bones providing phosphorus and calcium.</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success"></i> Rich in phosphorus</li>
+                                <li><i class="fas fa-check text-success"></i> Good source of calcium</li>
+                                <li><i class="fas fa-check text-success"></i> Slow-release nutrients</li>
+                                <li><i class="fas fa-check text-success"></i> NPK ratio: 3-15-0</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional Types Section -->
+        <section class="mb-5">
+            <h3 class="section-title text-center">More Organic Fertilizer Options</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-fish fa-3x text-success mb-3 service-icon"></i>
+                            <h5 class="card-title">Fish Emulsion</h5>
+                            <p class="card-text">Liquid fertilizer made from processed fish, rich in nitrogen and trace minerals.</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success"></i> Quick-acting nitrogen source</li>
+                                <li><i class="fas fa-check text-success"></i> Contains micronutrients</li>
+                                <li><i class="fas fa-check text-success"></i> Great for foliar feeding</li>
+                                <li><i class="fas fa-check text-success"></i> NPK ratio: 5-2-2</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-feather fa-3x text-success mb-3 service-icon"></i>
+                            <h5 class="card-title">Feather Meal</h5>
+                            <p class="card-text">Processed poultry feathers, excellent source of slow-release nitrogen.</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success"></i> High nitrogen content</li>
+                                <li><i class="fas fa-check text-success"></i> Long-lasting effect</li>
+                                <li><i class="fas fa-check text-success"></i> Improves soil structure</li>
+                                <li><i class="fas fa-check text-success"></i> NPK ratio: 12-0-0</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-seedling fa-3x text-success mb-3 service-icon"></i>
+                            <h5 class="card-title">Green Manure</h5>
+                            <p class="card-text">Cover crops grown and tilled into soil to improve fertility.</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success"></i> Natural soil amendment</li>
+                                <li><i class="fas fa-check text-success"></i> Prevents soil erosion</li>
+                                <li><i class="fas fa-check text-success"></i> Suppresses weeds</li>
+                                <li><i class="fas fa-check text-success"></i> Variable NPK ratios</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Application Timing Section -->
+        <section class="mb-5">
+            <h3 class="section-title text-center">Best Application Timing</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="application-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Seasonal Application Guide</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <i class="fas fa-sun text-warning me-2"></i>
+                                    <strong>Spring:</strong> Apply compost and manure before planting
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-cloud-sun text-warning me-2"></i>
+                                    <strong>Summer:</strong> Use liquid fertilizers for quick nutrient boost
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-cloud text-warning me-2"></i>
+                                    <strong>Fall:</strong> Apply slow-release fertilizers for winter
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-snowflake text-warning me-2"></i>
+                                    <strong>Winter:</strong> Prepare soil with green manure
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="application-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Crop-Specific Timing</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <i class="fas fa-seedling text-success me-2"></i>
+                                    <strong>Vegetables:</strong> Apply before planting and during growth
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-tree text-success me-2"></i>
+                                    <strong>Fruit Trees:</strong> Apply in early spring and after harvest
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-wheat text-success me-2"></i>
+                                    <strong>Grains:</strong> Apply before sowing and during tillering
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-leaf text-success me-2"></i>
+                                    <strong>Leafy Crops:</strong> Apply nitrogen-rich fertilizers during growth
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Application Methods Section -->
+        <section class="mb-5">
+            <h3 class="section-title text-center">Application Methods</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-spray-can fa-3x text-success mb-3 service-icon"></i>
+                            <h5 class="card-title">Foliar Application</h5>
+                            <p class="card-text">Spraying liquid fertilizers directly on plant leaves.</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success"></i> Quick nutrient absorption</li>
+                                <li><i class="fas fa-check text-success"></i> Best for micronutrients</li>
+                                <li><i class="fas fa-check text-success"></i> Apply early morning or evening</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-shovel fa-3x text-success mb-3 service-icon"></i>
+                            <h5 class="card-title">Soil Incorporation</h5>
+                            <p class="card-text">Mixing fertilizers into the soil before planting.</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success"></i> Even distribution</li>
+                                <li><i class="fas fa-check text-success"></i> Long-lasting effect</li>
+                                <li><i class="fas fa-check text-success"></i> Best for solid fertilizers</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-tint fa-3x text-success mb-3 service-icon"></i>
+                            <h5 class="card-title">Drip Irrigation</h5>
+                            <p class="card-text">Applying liquid fertilizers through irrigation systems.</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success"></i> Efficient water use</li>
+                                <li><i class="fas fa-check text-success"></i> Precise application</li>
+                                <li><i class="fas fa-check text-success"></i> Reduces nutrient loss</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="benefits-section">
+            <div class="container">
+                <h3 class="section-title text-center">Benefits of Using Organic Fertilizers</h3>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="benefit-item">
+                            <i class="fas fa-leaf benefit-icon"></i>
+                            <h4>Environmental Impact</h4>
+                            <p>Reduces chemical runoff and promotes sustainable farming practices</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="benefit-item">
+                            <i class="fas fa-seedling benefit-icon"></i>
+                            <h4>Soil Health</h4>
+                            <p>Improves soil structure and promotes beneficial microbial activity</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="benefit-item">
+                            <i class="fas fa-apple-alt benefit-icon"></i>
+                            <h4>Crop Quality</h4>
+                            <p>Enhances nutrient content and improves crop quality</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Application Guide -->
+        <section class="my-5" id="application">
+            <h3 class="section-title text-center">Application Guidelines</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="application-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Best Practices</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Apply during appropriate seasons</li>
+                                <li class="list-group-item">Follow recommended application rates</li>
+                                <li class="list-group-item">Ensure proper mixing with soil</li>
+                                <li class="list-group-item">Monitor soil pH levels</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="application-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Precautions</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Use properly aged manure</li>
+                                <li class="list-group-item">Avoid over-application</li>
+                                <li class="list-group-item">Store in appropriate conditions</li>
+                                <li class="list-group-item">Follow safety guidelines</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h5 class="mb-3">AgriConnect Data System</h5>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

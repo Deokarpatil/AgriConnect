@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Recommendation System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        .warning-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .crop-group {
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        .crop-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+        }
+        .progress {
+            height: 1.5rem;
+        }
+        .progress-bar {
+            font-size: 0.875rem;
+            line-height: 1.5rem;
+        }
+        .crop-requirements {
+            font-size: 0.875rem;
+        }
+        .crop-requirements li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center mb-4">Crop Recommendation System</h2>
+        
+        <form id="recommendation-form" action="{{ url_for('predict') }}" method="post" class="mb-4">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="Nitrogen" class="form-label">Nitrogen (N):</label>
+                    <input type="number" step="0.01" class="form-control" id="Nitrogen" name="Nitrogen" value="{{ N if N }}" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="Phosphorous" class="form-label">Phosphorus (P):</label>
+                    <input type="number" step="0.01" class="form-control" id="Phosphorous" name="Phosphorous" value="{{ P if P }}" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="Pottasium" class="form-label">Potassium (K):</label>
+                    <input type="number" step="0.01" class="form-control" id="Pottasium" name="Pottasium" value="{{ K if K }}" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="Temperature" class="form-label">Temperature (°C):</label>
+                    <input type="number" step="0.01" class="form-control" id="Temperature" name="Temperature" value="{{ temperature if temperature }}" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="Humidity" class="form-label">Humidity (%):</label>
+                    <input type="number" step="0.01" class="form-control" id="Humidity" name="Humidity" value="{{ humidity if humidity }}" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="Ph" class="form-label">pH:</label>
+                    <input type="number" step="0.01" class="form-control" id="Ph" name="Ph" value="{{ ph if ph }}" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="Rainfall" class="form-label">Rainfall (mm):</label>
+                    <input type="number" step="0.01" class="form-control" id="Rainfall" name="Rainfall" value="{{ rainfall if rainfall }}" required>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary">Get Recommendation</button>
+            </div>
+        </form>
+
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        {% if warnings %}
+        <div class="warning-box">
+            <h4 class="text-warning mb-3"><i class="fas fa-exclamation-triangle me-2"></i>Warnings</h4>
+            <ul class="mb-0">
+                {% for warning in warnings %}
+                <li class="mb-2">{{ warning }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        {% if prediction %}
+        <div class="mt-4">
+            <h3 class="text-center mb-4">Crop Recommendations</h3>
+            
+            <div class="row">
+                {% for crop in top_crops %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ crop.crop_name }}</h5>
+                            <p class="text-muted mb-2">Group: {{ crop.group|title }}</p>
+                            <div class="progress mb-3">
+                                <div class="progress-bar bg-success" role="progressbar" 
+                                     style="width: {{ crop.confidence }}%;" 
+                                     aria-valuenow="{{ crop.confidence }}" 
+                                     aria-valuemin="0" 
+                                     aria-valuemax="100">
+                                    {{ crop.confidence }}% Confidence
+                                </div>
+                            </div>
+                            <div class="crop-requirements mt-3">
+                                <h6 class="mb-2">Optimal Conditions:</h6>
+                                <ul class="list-unstyled small">
+                                    {% set req = CROP_REQUIREMENTS.get(crop.crop_name.lower(), {}) %}
+                                    <li><i class="fas fa-temperature-high me-2"></i>Temperature: {{ req.temp_min }}°C - {{ req.temp_max }}°C</li>
+                                    <li><i class="fas fa-cloud-rain me-2"></i>Rainfall: {{ req.rainfall_min }}mm - {{ req.rainfall_max }}mm</li>
+                                    <li><i class="fas fa-tint me-2"></i>Humidity: {{ req.humidity_min }}% - {{ req.humidity_max }}%</li>
+                                    <li><i class="fas fa-flask me-2"></i>pH: {{ req.ph_min }} - {{ req.ph_max }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div class="card mt-4">
+                <div class="card-header bg-light">
+                    <h4 class="mb-0"><i class="fas fa-info-circle me-2"></i>Input Summary</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Value</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="input-summary">
+                                <!-- Will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        window.inputData = {
+            Nitrogen: {{ input_data.Nitrogen if input_data else 0 }},
+            Phosphorus: {{ input_data.Phosporus if input_data else 0 }},
+            Potassium: {{ input_data.Potassium if input_data else 0 }},
+            Temperature: {{ input_data.Temperature if input_data else 0 }},
+            Humidity: {{ input_data.Humidity if input_data else 0 }},
+            Ph: {{ input_data.Ph if input_data else 0 }},
+            Rainfall: {{ input_data.Rainfall if input_data else 0 }}
+        };
+    </script>
+    <script src="{{ url_for('static', filename='js/recommendation.js') }}"></script>
+</body>
+</html> 

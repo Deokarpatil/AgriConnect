@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriConnect Data System - Potassium Fertilizers</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../Home/css/homestyle.css">
+    <style>
+        .nutrient-chart {
+            height: 300px;
+            margin-bottom: 2rem;
+        }
+        
+        .benefit-card {
+            transition: transform 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .application-timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .application-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: var(--primary-orange);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 20px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--primary-orange);
+        }
+        
+        .crop-recommendation {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .crop-recommendation:hover {
+            background-color: rgba(255, 165, 52, 0.1);
+        }
+        
+        .crop-details {
+            display: none;
+            padding: 1rem;
+            border-left: 3px solid var(--primary-orange);
+            margin-top: 1rem;
+        }
+        
+        .crop-recommendation.active .crop-details {
+            display: block;
+        }
+        
+        .crop-recommendation.active {
+            background-color: rgba(255, 165, 52, 0.05);
+        }
+        
+        .calculator-form {
+            background-color: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .result-box {
+            display: none;
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background-color: #e9f7fe;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-blue);
+        }
+        
+        .soil-ph-chart {
+            height: 300px;
+            margin: 2rem 0;
+        }
+        
+        .interaction-card {
+            border-left: 4px solid var(--primary-orange);
+            transition: all 0.3s ease;
+        }
+        
+        .interaction-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand d-flex align-items-center" href="../Home/index.html">
+                <img src="../Home/Assets/images/Logo.png" alt="AgriConnect Logo" height="150" class="me-1">
+                <span class="display-5 mb-0">AgriConnect</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Home/index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Resource/resource.html">Resources</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../AhilyaNagar/Ahilyanagar.html">Ahilyanagar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Recommendation/recommendation.html">Crop Recommendation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../Fertilizers/fertilizers.html">Fertilizers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Irrigation/irrigation.html">Irrigation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Equipment/equipment.html">Equipment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../About/about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section text-white text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-4 animate-fade-in">Potassium (K) Fertilizers</h1>
+            <p class="lead mb-4 animate-fade-in">Essential for water regulation, disease resistance, and fruit quality</p>
+            <div class="hero-buttons">
+                <a href="#benefits" class="btn btn-light btn-lg me-3 animate-fade-in">Learn Benefits</a>
+                <a href="#calculator" class="btn btn-outline-light btn-lg animate-fade-in">Calculate Dosage</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Fertilizer Type Navigation -->
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="text-center mb-4">Fertilizer Types</h5>
+                        <div class="d-flex justify-content-center gap-3">
+                            <a href="nitrogen.html" class="btn btn-outline-primary">
+                                <i class="fas fa-atom me-2"></i>Nitrogen (N)
+                            </a>
+                            <a href="phosphorus.html" class="btn btn-outline-success">
+                                <i class="fas fa-flask me-2"></i>Phosphorus (P)
+                            </a>
+                            <a href="potassium.html" class="btn btn-primary">
+                                <i class="fas fa-leaf me-2"></i>Potassium (K)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+        <!-- Overview Section -->
+        <section id="overview" class="mb-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h2 class="section-title mb-4">Understanding Potassium</h2>
+                    <p class="lead">Potassium is a vital nutrient that regulates water movement, enzyme activation, and overall plant health.</p>
+                    <p>Plants absorb potassium primarily in the form of K⁺ ions. It's essential for osmoregulation, protein synthesis, and the activation of many enzymes involved in growth and development.</p>
+                    <div class="mt-4">
+                        <h5>Key Facts:</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Regulates water balance in plants</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Enhances disease and stress resistance</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Improves fruit quality and shelf life</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Essential for enzyme activation</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="gallery-card">
+                        <img src="assets/img/potta_cycle.jpg" alt="Potassium Cycle" class="img-fluid rounded">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section id="benefits" class="mb-5">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Benefits of Potassium Fertilizers</h2>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card benefit-card">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-tint fa-3x text-primary mb-3 service-icon"></i>
+                            <h5 class="card-title">Water Regulation</h5>
+                            <p class="card-text">Improves water uptake and retention, helping plants withstand drought conditions.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card benefit-card">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-shield-alt fa-3x text-warning mb-3 service-icon"></i>
+                            <h5 class="card-title">Disease Resistance</h5>
+                            <p class="card-text">Strengthens cell walls and enhances the plant's natural defense mechanisms.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card benefit-card">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-apple-alt fa-3x text-success mb-3 service-icon"></i>
+                            <h5 class="card-title">Fruit Quality</h5>
+                            <p class="card-text">Improves fruit size, color, taste, and shelf life of harvested produce.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card benefit-card">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-flask fa-3x text-info mb-3 service-icon"></i>
+                            <h5 class="card-title">Enzyme Activation</h5>
+                            <p class="card-text">Activates enzymes involved in photosynthesis, respiration, and protein synthesis.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-card benefit-card">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-temperature-low fa-3x text-danger mb-3 service-icon"></i>
+                            <h5 class="card-title">Cold Tolerance</h5>
+                            <p class="card-text">Improves plant resistance to cold temperatures and frost damage.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-card benefit-card">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-exchange-alt fa-3x text-secondary mb-3 service-icon"></i>
+                            <h5 class="card-title">Nutrient Transport</h5>
+                            <p class="card-text">Facilitates the movement of nutrients and sugars throughout the plant.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deficiency Symptoms -->
+        <section id="deficiency" class="mb-5">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Potassium Deficiency Symptoms</h2>
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="gallery-card">
+                        <img src="assets/img/nitrogen_deficiency.jpg" alt="Potassium Deficiency" class="img-fluid rounded">
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="card shadow service-card">
+                        <div class="card-body p-4">
+                            <h4 class="mb-4">Common Signs of Potassium Deficiency:</h4>
+                            <ul class="list-unstyled">
+                                <li class="mb-3"><i class="fas fa-exclamation-triangle text-warning me-2"></i> <strong>Scorching of leaf margins</strong> - Starting with older leaves</li>
+                                <li class="mb-3"><i class="fas fa-exclamation-triangle text-warning me-2"></i> <strong>Weak stems</strong> - Plants may lodge easily</li>
+                                <li class="mb-3"><i class="fas fa-exclamation-triangle text-warning me-2"></i> <strong>Reduced fruit size</strong> - Smaller fruits with poor quality</li>
+                                <li class="mb-3"><i class="fas fa-exclamation-triangle text-warning me-2"></i> <strong>Delayed maturity</strong> - Plants take longer to reach harvest stage</li>
+                                <li class="mb-3"><i class="fas fa-exclamation-triangle text-warning me-2"></i> <strong>Increased disease susceptibility</strong> - Plants become more vulnerable to pathogens</li>
+                                <li class="mb-3"><i class="fas fa-exclamation-triangle text-warning me-2"></i> <strong>Poor water regulation</strong> - Plants wilt easily under stress</li>
+                            </ul>
+                            <div class="alert alert-info mt-4">
+                                <i class="fas fa-info-circle me-2"></i> Potassium deficiency symptoms typically appear first in older leaves because potassium is a mobile nutrient that plants can redistribute from older to newer tissues.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Soil Interaction -->
+        <section id="soil-interaction" class="mb-5">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Soil and Potassium Availability</h2>
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="card shadow service-card">
+                        <div class="card-body p-4">
+                            <h4 class="mb-4">Understanding Soil Effects on Potassium:</h4>
+                            <p>Soil type and pH significantly affect potassium availability to plants. Potassium is most available in soils with a pH between 6.0 and 7.5.</p>
+                            
+                            <div class="interaction-card p-3 mb-3">
+                                <h5><i class="fas fa-flask text-danger me-2"></i> Sandy Soils</h5>
+                                <p>Potassium leaches easily from sandy soils, requiring more frequent applications in smaller amounts.</p>
+                            </div>
+                            
+                            <div class="interaction-card p-3 mb-3">
+                                <h5><i class="fas fa-flask text-success me-2"></i> Clay Soils</h5>
+                                <p>Clay soils have higher potassium retention capacity but may have limited availability due to fixation.</p>
+                            </div>
+                            
+                            <div class="interaction-card p-3">
+                                <h5><i class="fas fa-flask text-warning me-2"></i> Organic Matter</h5>
+                                <p>Soils with high organic matter content generally have better potassium availability and retention.</p>
+                            </div>
+                            
+                            <div class="alert alert-warning mt-4">
+                                <i class="fas fa-exclamation-triangle me-2"></i> In soils with high calcium or magnesium content, potassium availability may be reduced due to competition for exchange sites.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="gallery-card">
+                        <img src="assets/img/potassium_chart.jpg" alt="Potassium Availability by Soil Type" class="img-fluid rounded">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Application Guide -->
+        <section id="application" class="mb-5">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Application Guidelines</h2>
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="card shadow service-card">
+                        <div class="card-body p-4">
+                            <h4 class="mb-4">Best Practices for Potassium Application:</h4>
+                            <div class="application-timeline">
+                                <div class="timeline-item">
+                                    <h5>Soil Testing</h5>
+                                    <p>Begin with a soil test to determine existing potassium levels. This helps calculate the exact amount needed.</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h5>Split Applications</h5>
+                                    <p>For annual crops, apply potassium in multiple doses throughout the growing season rather than all at once.</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h5>Placement</h5>
+                                    <p>For row crops, band application near the seed or plant rows can improve efficiency.</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h5>Timing</h5>
+                                    <p>Apply before periods of rapid growth or fruit development for maximum benefit.</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h5>Irrigation</h5>
+                                    <p>Ensure adequate moisture after application to help potassium move into the root zone.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="card shadow service-card">
+                        <div class="card-body p-4">
+                            <h4 class="mb-4">Common Potassium Fertilizer Types:</h4>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Type</th>
+                                            <th>K Content</th>
+                                            <th>Characteristics</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Muriate of Potash (MOP)</td>
+                                            <td>60% K₂O</td>
+                                            <td>Most common, contains chloride</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sulfate of Potash (SOP)</td>
+                                            <td>50% K₂O</td>
+                                            <td>Chloride-free, good for sensitive crops</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Potassium Nitrate</td>
+                                            <td>44% K₂O</td>
+                                            <td>Contains nitrogen, good for foliar application</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Potassium Magnesium Sulfate</td>
+                                            <td>22% K₂O</td>
+                                            <td>Contains magnesium and sulfur</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Wood Ash</td>
+                                            <td>5-10% K₂O</td>
+                                            <td>Organic source, variable composition</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Crop Recommendations -->
+        <section id="crops" class="mb-5">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Crop-Specific Recommendations</h2>
+            <div class="row">
+                <div class="col-12" data-aos="fade-up">
+                    <div class="card shadow service-card">
+                        <div class="card-body p-4">
+                            <div class="crop-recommendation" data-crop="cereals">
+                                <h4 class="d-flex justify-content-between align-items-center">
+                                    <span><i class="fas fa-wheat-awn me-2 text-warning"></i> Cereals (Rice, Wheat, Corn)</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </h4>
+                                <div class="crop-details">
+                                    <p>Cereals benefit from potassium, especially during grain filling and maturity stages.</p>
+                                    <ul>
+                                        <li><strong>Application Rate:</strong> 40-60 kg K₂O/ha</li>
+                                        <li><strong>Timing:</strong> Apply at planting and before flowering</li>
+                                        <li><strong>Placement:</strong> Broadcast or band application</li>
+                                        <li><strong>Special Notes:</strong> Adequate potassium reduces lodging and improves grain quality</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="crop-recommendation" data-crop="legumes">
+                                <h4 class="d-flex justify-content-between align-items-center">
+                                    <span><i class="fas fa-seedling me-2 text-success"></i> Legumes</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </h4>
+                                <div class="crop-details">
+                                    <p>Legumes have moderate potassium requirements but benefit greatly from proper application.</p>
+                                    <ul>
+                                        <li><strong>Application Rate:</strong> 30-50 kg K₂O/ha</li>
+                                        <li><strong>Timing:</strong> Apply at planting</li>
+                                        <li><strong>Placement:</strong> Band application near the seed</li>
+                                        <li><strong>Special Notes:</strong> Adequate potassium improves pod formation and seed quality</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="crop-recommendation" data-crop="vegetables">
+                                <h4 class="d-flex justify-content-between align-items-center">
+                                    <span><i class="fas fa-carrot me-2 text-danger"></i> Vegetables</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </h4>
+                                <div class="crop-details">
+                                    <p>Vegetables vary in potassium needs based on type and growth stage.</p>
+                                    <ul>
+                                        <li><strong>Application Rate:</strong> 60-100 kg K₂O/ha for fruiting vegetables, 40-80 kg K₂O/ha for root vegetables</li>
+                                        <li><strong>Timing:</strong> Apply before planting and during fruit development</li>
+                                        <li><strong>Placement:</strong> Broadcast and incorporate before planting</li>
+                                        <li><strong>Special Notes:</strong> Fruiting vegetables benefit from potassium during flowering and fruit development</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="crop-recommendation" data-crop="fruits">
+                                <h4 class="d-flex justify-content-between align-items-center">
+                                    <span><i class="fas fa-apple-whole me-2 text-danger"></i> Fruit Trees</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </h4>
+                                <div class="crop-details">
+                                    <p>Fruit trees need balanced potassium for fruit development and quality.</p>
+                                    <ul>
+                                        <li><strong>Application Rate:</strong> 50-100 kg K₂O/ha depending on age and productivity</li>
+                                        <li><strong>Timing:</strong> Apply in early spring and after harvest</li>
+                                        <li><strong>Placement:</strong> Broadcast under the canopy and incorporate</li>
+                                        <li><strong>Special Notes:</strong> Adequate potassium improves fruit size, color, and shelf life</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="crop-recommendation" data-crop="nagar-nashik">
+                                <h4 class="d-flex justify-content-between align-items-center">
+                                    <span><i class="fas fa-map-marker-alt me-2 text-primary"></i> Nagar & Nashik District Crops</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </h4>
+                                <div class="crop-details">
+                                    <p>Commonly grown crops in Nagar and Nashik districts with specific potassium recommendations:</p>
+                                    <ul>
+                                        <li><strong>Grapes:</strong> 80-120 kg K₂O/ha, apply before bud break and during berry development</li>
+                                        <li><strong>Sugarcane:</strong> 100-150 kg K₂O/ha, apply at planting and during grand growth phase</li>
+                                        <li><strong>Onion:</strong> 60-80 kg K₂O/ha, apply at planting and during bulb formation</li>
+                                        <li><strong>Tomato:</strong> 80-100 kg K₂O/ha, apply at planting and during fruit development</li>
+                                        <li><strong>Pomegranate:</strong> 60-80 kg K₂O/ha, apply in early spring and during fruit development</li>
+                                        <li><strong>Banana:</strong> 200-250 kg K₂O/ha, split into 6-8 applications throughout the growing season</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dosage Calculator -->
+        <section id="calculator" class="mb-5">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Potassium Dosage Calculator</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8" data-aos="fade-up">
+                    <div class="calculator-form">
+                        <form id="potassiumCalculator">
+                            <div class="mb-3">
+                                <label for="cropType" class="form-label">Crop Type</label>
+                                <select class="form-select" id="cropType" required>
+                                    <option value="" selected disabled>Select crop type</option>
+                                    <option value="cereals">Cereals (Rice, Wheat, Corn)</option>
+                                    <option value="legumes">Legumes</option>
+                                    <option value="vegetables">Vegetables</option>
+                                    <option value="fruits">Fruit Trees</option>
+                                    <option value="grapes">Grapes</option>
+                                    <option value="sugarcane">Sugarcane</option>
+                                    <option value="onion">Onion</option>
+                                    <option value="tomato">Tomato</option>
+                                    <option value="pomegranate">Pomegranate</option>
+                                    <option value="banana">Banana</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="areaUnit" class="form-label">Area Unit</label>
+                                <select class="form-select" id="areaUnit" required>
+                                    <option value="hectares" selected>Hectares</option>
+                                    <option value="gunthas">Gunthas</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="fieldSize" class="form-label">Field Size</label>
+                                <input type="number" class="form-control" id="fieldSize" min="0.1" step="0.1" required>
+                                <div class="form-text">Enter the size in the selected unit (1 hectare = 24.71 gunthas)</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="soilType" class="form-label">Soil Type</label>
+                                <select class="form-select" id="soilType" required>
+                                    <option value="" selected disabled>Select soil type</option>
+                                    <option value="sandy">Sandy</option>
+                                    <option value="loamy">Loamy</option>
+                                    <option value="clay">Clay</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="fertilizerType" class="form-label">Fertilizer Type</label>
+                                <select class="form-select" id="fertilizerType" required>
+                                    <option value="" selected disabled>Select fertilizer type</option>
+                                    <option value="mop">Muriate of Potash (60% K₂O)</option>
+                                    <option value="sop">Sulfate of Potash (50% K₂O)</option>
+                                    <option value="potassiumNitrate">Potassium Nitrate (44% K₂O)</option>
+                                    <option value="potassiumMagnesiumSulfate">Potassium Magnesium Sulfate (22% K₂O)</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Calculate Dosage</button>
+                        </form>
+                        
+                        <div class="result-box" id="resultBox">
+                            <h4 class="mb-3">Recommended Application</h4>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><strong>Total Potassium Needed:</strong> <span id="totalPotassium">0</span> kg K₂O</p>
+                                    <p><strong>Fertilizer Amount:</strong> <span id="fertilizerAmount">0</span> kg</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><strong>Application Method:</strong></p>
+                                    <ul id="applicationMethod" class="list-unstyled">
+                                        <!-- Will be populated by JavaScript -->
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="alert alert-info mt-3" id="soilAlert">
+                                <!-- Will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h5 class="mb-3">AgriConnect Data System</h5>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+        
+        // Crop recommendation toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const cropRecommendations = document.querySelectorAll('.crop-recommendation');
+            
+            cropRecommendations.forEach(crop => {
+                crop.querySelector('h4').addEventListener('click', function() {
+                    // Toggle active class
+                    crop.classList.toggle('active');
+                    
+                    // Toggle chevron icon
+                    const icon = this.querySelector('.fa-chevron-down');
+                    icon.style.transform = crop.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
+                });
+            });
+            
+            // Potassium Calculator
+            const calculatorForm = document.getElementById('potassiumCalculator');
+            const resultBox = document.getElementById('resultBox');
+            const soilAlert = document.getElementById('soilAlert');
+            
+            calculatorForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const cropType = document.getElementById('cropType').value;
+                const areaUnit = document.getElementById('areaUnit').value;
+                const fieldSize = parseFloat(document.getElementById('fieldSize').value);
+                const soilType = document.getElementById('soilType').value;
+                const fertilizerType = document.getElementById('fertilizerType').value;
+                
+                // Convert gunthas to hectares if needed
+                let fieldSizeInHectares = fieldSize;
+                if (areaUnit === 'gunthas') {
+                    fieldSizeInHectares = fieldSize / 24.71;
+                }
+                
+                // Calculate potassium requirements based on crop type
+                let potassiumPerHectare = 0;
+                let applicationMethod = [];
+                
+                switch(cropType) {
+                    case 'cereals':
+                        potassiumPerHectare = 50;
+                        applicationMethod = [
+                            'Apply at planting',
+                            'Additional application before flowering'
+                        ];
+                        break;
+                    case 'legumes':
+                        potassiumPerHectare = 40;
+                        applicationMethod = [
+                            'Apply at planting',
+                            'Band application near the seed'
+                        ];
+                        break;
+                    case 'vegetables':
+                        potassiumPerHectare = 80;
+                        applicationMethod = [
+                            'Apply before planting',
+                            'Additional application during fruit development'
+                        ];
+                        break;
+                    case 'fruits':
+                        potassiumPerHectare = 75;
+                        applicationMethod = [
+                            'Apply in early spring',
+                            'Additional application after harvest'
+                        ];
+                        break;
+                    case 'grapes':
+                        potassiumPerHectare = 100;
+                        applicationMethod = [
+                            'Apply before bud break',
+                            'Additional application during berry development'
+                        ];
+                        break;
+                    case 'sugarcane':
+                        potassiumPerHectare = 125;
+                        applicationMethod = [
+                            'Apply at planting',
+                            'Additional application during grand growth phase'
+                        ];
+                        break;
+                    case 'onion':
+                        potassiumPerHectare = 70;
+                        applicationMethod = [
+                            'Apply at planting',
+                            'Additional application during bulb formation'
+                        ];
+                        break;
+                    case 'tomato':
+                        potassiumPerHectare = 90;
+                        applicationMethod = [
+                            'Apply at planting',
+                            'Additional application during fruit development'
+                        ];
+                        break;
+                    case 'pomegranate':
+                        potassiumPerHectare = 70;
+                        applicationMethod = [
+                            'Apply in early spring',
+                            'Additional application during fruit development'
+                        ];
+                        break;
+                    case 'banana':
+                        potassiumPerHectare = 225;
+                        applicationMethod = [
+                            'Apply at planting',
+                            'Split remaining applications throughout the growing season'
+                        ];
+                        break;
+                }
+                
+                // Adjust for soil type
+                let soilAdjustment = 1.0;
+                let soilMessage = '';
+                
+                if (soilType === 'sandy') {
+                    soilAdjustment = 1.3; // 30% more for sandy soils
+                    soilMessage = 'Your soil is sandy. Consider applying potassium in smaller, more frequent doses to prevent leaching.';
+                } else if (soilType === 'clay') {
+                    soilAdjustment = 0.9; // 10% less for clay soils
+                    soilMessage = 'Your soil is clay. Potassium may be less available due to fixation. Consider split applications for better efficiency.';
+                } else {
+                    soilMessage = 'Your loamy soil has good potassium retention capacity. Standard application rates should be effective.';
+                }
+                
+                // Calculate total potassium needed
+                const totalPotassium = potassiumPerHectare * fieldSizeInHectares * soilAdjustment;
+                
+                // Calculate fertilizer amount based on fertilizer type
+                let fertilizerAmount = 0;
+                let potassiumPercentage = 0;
+                
+                switch(fertilizerType) {
+                    case 'mop':
+                        potassiumPercentage = 60;
+                        break;
+                    case 'sop':
+                        potassiumPercentage = 50;
+                        break;
+                    case 'potassiumNitrate':
+                        potassiumPercentage = 44;
+                        break;
+                    case 'potassiumMagnesiumSulfate':
+                        potassiumPercentage = 22;
+                        break;
+                }
+                
+                fertilizerAmount = (totalPotassium / potassiumPercentage) * 100;
+                
+                // Display results
+                document.getElementById('totalPotassium').textContent = Math.round(totalPotassium);
+                document.getElementById('fertilizerAmount').textContent = Math.round(fertilizerAmount);
+                
+                // Populate application method
+                const methodList = document.getElementById('applicationMethod');
+                methodList.innerHTML = '';
+                
+                applicationMethod.forEach(item => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<i class="fas fa-check-circle text-success me-2"></i>${item}`;
+                    methodList.appendChild(li);
+                });
+                
+                // Display soil alert
+                soilAlert.innerHTML = `<i class="fas fa-info-circle me-2"></i>${soilMessage}`;
+                
+                // Show result box
+                resultBox.style.display = 'block';
+                
+                // Scroll to results
+                resultBox.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html> 

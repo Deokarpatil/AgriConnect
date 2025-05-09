@@ -1,0 +1,563 @@
+{
+  "Rahata": {
+    "crops": [
+      {
+        "crop": "Sugarcane – ऊस",
+        "production_tonnes": 750000,
+        "area_percent": 7.9,
+        "why_important": "Rahata gets good water from the Mula-Pravara canal and has sugar mills nearby. This helps farmers grow sugarcane easily and sell it quickly.",
+        "advantages": [
+          "Brings high income to farmers",
+          "Helps sugar mills and local economy",
+          "Grows well with proper water",
+          "Can be harvested in large quantity"
+        ]
+      },
+      {
+        "crop": "Grapes – द्राक्ष",
+        "production_tonnes": 90000,
+        "area_percent": null,
+        "why_important": "The soil and weather in Rahata are perfect for grapes. Many farmers grow grapes for making wine, juice, and fresh sale.",
+        "advantages": [
+          "Can be exported to other countries",
+          "Used for wine and juice",
+          "Good profit for farmers",
+          "Tastes good and grows well in dry weather"
+        ]
+      },
+      {
+        "crop": "Pomegranate – डाळिंब",
+        "production_tonnes": 12000,
+        "area_percent": null,
+        "why_important": "Rahata has hot and dry weather, which is very good for growing pomegranates. Many farmers in this area grow this fruit because it grows well and people want to buy it in the market. Good farming methods are helping them get more fruit from each plant.",
+        "advantages": [
+          "Sells at a high price in local and export markets",
+          "Needs less water compared to other fruits",
+          "Can be stored for a long time without damage",
+          "Tastes good and has many health benefits",
+          "Good for earning regular income for small farmers"
+        ]
+      }
+    ],
+    "major_crops": [
+      "Sugarcane",
+      "Grapes",
+      "Pomegranate",
+      "Wheat"
+    ]
+  },
+  "Sangamner": {
+    "crops": [
+      {
+        "crop": "Bajra – बाजरी",
+        "production_tonnes": 11640,
+        "area_percent": 11.8,
+        "why_important": "Bajra grows well in Sangamner's light soil and moderate rainfall. It's a staple food for many people in the area.",
+        "advantages": [
+          "Can grow with less water",
+          "Good for health and nutrition",
+          "Helps in food security",
+          "Suitable for dry regions"
+        ]
+      },
+      {
+        "crop": "Groundnut – भुईमूग",
+        "production_tonnes": 4200,
+        "area_percent": null,
+        "why_important": "Groundnut is suitable for Sangamner's soil and climate. It's an important oilseed crop that enriches the soil.",
+        "advantages": [
+          "Provides edible oil",
+          "Improves soil fertility",
+          "Can be used as animal feed",
+          "Good market demand"
+        ]
+      },
+      {
+        "crop": "Soybean – सोयाबीन",
+        "production_tonnes": 5000,
+        "area_percent": null,
+        "why_important": "Soybean is a short-season crop that fits well in Sangamner's farming cycle. It's linked to the market and provides good returns.",
+        "advantages": [
+          "Rich in protein and oil",
+          "Improves soil health",
+          "High demand in the market",
+          "Can be used in various food products"
+        ]
+      }
+    ],
+    "major_crops": [
+      "Grapes",
+      "Onion",
+      "Sugarcane",
+      "Wheat",
+      "Bajra"
+    ]
+  },
+  "Kopargaon": {
+    "crops": [
+      {
+        "crop": "Sugarcane – ऊस",
+        "production_tonnes": 675000,
+        "area_percent": 7.1,
+        "why_important": "Kopargaon is in the Godavari basin, which provides reliable irrigation. This helps in growing sugarcane effectively.",
+        "advantages": [
+          "High productivity",
+          "Supports local agro-economy",
+          "Provides raw material for sugar mills",
+          "Good income for farmers"
+        ]
+      },
+      {
+        "crop": "Grapes – द्राक्ष",
+        "production_tonnes": 85000,
+        "area_percent": null,
+        "why_important": "The climate in Kopargaon is suitable for viticulture. Grapes grown here are of export quality.",
+        "advantages": [
+          "Used in wine industry",
+          "High market value",
+          "Supports local employment",
+          "Can be exported"
+        ]
+      }
+    ],
+    "major_crops": [
+      "Sugarcane",
+      "Grapes",
+      "Wheat",
+      "Bajra"
+    ]
+  },
+  "Shrirampur": {
+    "crops": [
+      {
+        "crop": "Sugarcane – ऊस",
+        "production_tonnes": 600000,
+        "area_percent": 6.3,
+        "why_important": "Shrirampur has canal irrigation facilities and industrial sugar factories, making it ideal for sugarcane cultivation.",
+        "advantages": [
+          "High value crop",
+          "Supports agro-processing industries",
+          "Provides employment",
+          "Stable income for farmers"
+        ]
+      },
+      {
+        "crop": "Wheat – गहू",
+        "production_tonnes": 7000,
+        "area_percent": null,
+        "why_important": "The fertile alluvial soil in Shrirampur is good for wheat cultivation, especially during the winter season.",
+        "advantages": [
+          "Nutrient-dense grain",
+          "Key winter crop",
+          "Staple food",
+          "Good market demand"
+        ]
+      }
+    ],
+    "major_crops": [
+      "Sugarcane",
+      "Cotton",
+      "Bajra",
+      "Gram"
+    ]
+  },
+  "Nevasa": {
+    "crops": [
+      {
+        "crop": "Sugarcane – ऊस",
+        "production_tonnes": 825000,
+        "area_percent": 8.7,
+        "why_important": "Nevasa has fertile black cotton soil and canal irrigation, making it suitable for sugarcane farming.",
+        "advantages": [
+          "High revenue crop",
+          "Supports multiple sugar units",
+          "Provides employment",
+          "Stable income for farmers"
+        ]
+      },
+      {
+        "crop": "Wheat – गहू",
+        "production_tonnes": 9000,
+        "area_percent": null,
+        "why_important": "Wheat is a winter crop that benefits from assured irrigation in Nevasa.",
+        "advantages": [
+          "Staple food",
+          "Good market demand",
+          "Supports food security",
+          "Provides income during rabi season"
+        ]
+      }
+    ],
+    "major_crops": [
+      "Sugarcane",
+      "Wheat",
+      "Onion",
+      "Bajra"
+    ]
+  },
+  "Shevgaon": {
+    "crops": [
+      {
+        "crop": "Bajra – बाजरी",
+        "production_tonnes": 10088,
+        "area_percent": 10.3,
+        "why_important": "Shevgaon is a semi-arid region with limited irrigation, making bajra a suitable crop.",
+        "advantages": [
+          "Low input cost",
+          "Provides food security",
+          "Drought-resistant",
+          "Suitable for dry regions"
+        ]
+      },
+      {
+        "crop": "Moong – मुग, Udad – उडीद",
+        "production_tonnes": 4400,
+        "area_percent": null,
+        "why_important": "Short-duration pulse crops like moong and udad are grown post-monsoon in Shevgaon.",
+        "advantages": [
+          "Fix nitrogen in soil",
+          "Boost income from short cycles",
+          "High protein content",
+          "Good market demand"
+        ]
+      }
+    ],
+    "major_crops": [
+      "Cotton",
+      "Bajra",
+      "Gram",
+      "Wheat"
+    ]
+  },
+  "Pathardi": {
+    "crops": [
+      {
+        "crop": "Bajra – बाजरी",
+        "production_tonnes": 10864,
+        "area_percent": 11.1,
+        "why_important": "Pathardi has low rainfall and light soils, making bajra a suitable crop.",
+        "advantages": [
+          "Requires little water",
+          "Climate resilient",
+          "Provides food and fodder",
+          "Suitable for dry regions"
+        ]
+      },
+      {
+        "crop": "Pulses – कडधान्य",
+        "production_tonnes": 4100,
+        "area_percent": null,
+        "why_important": "Pulses are drought-resistant and good for dry farming in Pathardi.",
+        "advantages": [
+          "Enriches soil",
+          "Protein source",
+          "Good market demand",
+          "Supports crop diversification"
+        ]
+      }
+    ],
+    "major_crops": [
+      "Cotton",
+      "Bajra",
+      "Gram",
+      "Wheat"
+    ]
+  },
+  "Nagar": {
+    "crops": [
+      {
+        "crop": "Sugarcane – ऊस",
+        "production_tonnes": 862500,
+        "area_percent": 9.1,
+        "why_important": "Nagar has central access to markets and mills with good irrigation, making sugarcane a key crop.",
+        "advantages": [
+          "Generates rural employment",
+          "Supports sugar industry",
+          "High income for farmers",
+          "Stable market demand"
+        ]
+      },
+      {
+        "crop": "Wheat – गहू",
+        "production_tonnes": 9500,
+        "area_percent": null,
+        "why_important": "Stable winter weather in Nagar supports wheat cultivation.",
+        "advantages": [
+          "Essential for household consumption",
+          "Good for storage",
+          "Staple food",
+          "Provides income during rabi season"
+        ]
+      }
+    ],
+    "major_crops": [
+      "Sugarcane",
+      "Bajra",
+      "Onion",
+      "Gram"
+    ]
+  },
+  "Rahuri": {
+    "crops": [
+      {
+        "crop": "Sugarcane – ऊस",
+        "production_tonnes": 787500,
+        "area_percent": 8.3,
+        "why_important": "Rahuri has good irrigation facilities and fertile soil, making it suitable for sugarcane cultivation. The presence of nearby sugar mills provides a ready market for farmers.",
+        "advantages": [
+          "High yield per acre",
+          "Steady income for farmers",
+          "Supports local sugar industry",
+          "Can be used for multiple products like sugar and ethanol"
+        ]
+      },
+      {
+        "crop": "Wheat – गहू",
+        "production_tonnes": 8000,
+        "area_percent": null,
+        "why_important": "Wheat is a staple food crop grown during the winter season. Rahuri's climate and soil conditions are favorable for wheat farming.",
+        "advantages": [
+          "Essential food grain",
+          "Good market demand",
+          "Can be stored for long periods",
+          "Supports food security in the region"
+        ]
+      }
+    ],
+    "major_crops": [
+      "Sugarcane",
+      "Grapes",
+      "Onion",
+      "Wheat"
+    ]
+  },
+  "Shrigonda": {
+    "crops": [
+      {
+        "crop": "Sugarcane – ऊस",
+        "production_tonnes": 937500,
+        "area_percent": 9.9,
+        "why_important": "Shrigonda benefits from canal irrigation, making it suitable for sugarcane farming. The crop supports the local economy through sugar production.",
+        "advantages": [
+          "High profitability",
+          "Supports agro-based industries",
+          "Provides employment opportunities",
+          "Contributes to rural development"
+        ]
+      },
+      {
+        "crop": "Cotton – कपाशी",
+        "production_tonnes": 5200,
+        "area_percent": null,
+        "why_important": "Cotton is grown in Shrigonda due to its black soil, which is ideal for cotton cultivation. The crop is important for the textile industry.",
+        "advantages": [
+          "High market value",
+          "Supports textile manufacturing",
+          "Provides employment in ginning and spinning mills",
+          "Can be intercropped with other crops"
+        ]
+      }
+    ],
+    "major_crops": [
+      "Sugarcane",
+      "Cotton",
+      "Bajra",
+      "Wheat",
+      "Gram"
+    ]
+  },
+  "Karjat": {
+    "crops": [
+      {
+        "crop": "Bajra – बाजरी",
+        "production_tonnes": 10476,
+        "area_percent": 10.7,
+        "why_important": "Karjat's semi-arid climate and light soils are suitable for bajra cultivation. The crop is drought-resistant and serves as a staple food.",
+        "advantages": [
+          "Requires minimal water",
+          "Grows well in poor soils",
+          "Provides food and fodder",
+          "Helps in soil conservation"
+        ]
+      },
+      {
+        "crop": "Groundnut – भुईमूग",
+        "production_tonnes": 4800,
+        "area_percent": null,
+        "why_important": "Groundnut is cultivated in Karjat due to its light soil and favorable climate. It is an important oilseed crop.",
+        "advantages": [
+          "Source of edible oil",
+          "Improves soil fertility through nitrogen fixation",
+          "Can be used for multiple products like oil and fodder",
+          "Provides income diversification for farmers"
+        ]
+      }
+    ],
+    "major_crops": [
+      "Cotton",
+      "Bajra",
+      "Wheat",
+      "Gram"
+    ]
+  },
+  "Jamkhed": {
+    "crops": [
+      {
+        "crop": "Bajra – बाजरी",
+        "production_tonnes": 11232,
+        "area_percent": 11.5,
+        "why_important": "Jamkhed's dry climate and low rainfall make it suitable for bajra, a drought-tolerant crop that serves as a staple food.",
+        "advantages": [
+          "Thrives in dry conditions",
+          "Provides essential nutrients",
+          "Used as food and fodder",
+          "Supports food security in arid regions"
+        ]
+      },
+      {
+        "crop": "Pulses – कडधान्य",
+        "production_tonnes": 3900,
+        "area_percent": null,
+        "why_important": "Pulses are grown in Jamkhed due to their adaptability to dry conditions. They are a vital source of protein.",
+        "advantages": [
+          "Enhances soil fertility",
+          "Requires less water",
+          "Provides dietary protein",
+          "Can be intercropped with cereals"
+        ]
+      }
+    ],
+    "major_crops": [
+      "Cotton",
+      "Bajra",
+      "Wheat",
+      "Gram"
+    ]
+  },
+  "Ahmednagar": {
+    "crops": [
+      {
+        "crop": "Sugarcane – ऊस",
+        "production_tonnes": 862500,
+        "area_percent": 9.1,
+        "why_important": "Ahmednagar has a well-established sugar industry, and sugarcane cultivation supports this sector. The crop benefits from available irrigation facilities.",
+        "advantages": [
+          "High yield and profitability",
+          "Supports sugar mills and related industries",
+          "Provides employment opportunities",
+          "Can be used for multiple products like sugar and ethanol"
+        ]
+      },
+      {
+        "crop": "Wheat – गहू",
+        "production_tonnes": 9500,
+        "area_percent": null,
+        "why_important": "Wheat is a key rabi crop in Ahmednagar, grown during the winter season. The region's climate and soil are conducive to wheat farming.",
+        "advantages": [
+          "Staple food grain",
+          "Good market demand",
+          "Can be stored for extended periods",
+          "Supports food security in the region"
+        ]
+      }
+    ],
+    "major_crops": [
+      "Sugarcane",
+      "Bajra",
+      "Onion",
+      "Gram"
+    ]
+  },
+  "Akole": {
+    "crops": [
+      {
+        "crop": "Sugarcane – ऊस",
+        "production_tonnes": 712500,
+        "area_percent": 7.5,
+        "why_important": "Akole's fertile soil and availability of irrigation from rivers like Pravara and Mula make it ideal for sugarcane cultivation. The presence of sugar mills in the area provides a ready market for farmers.",
+        "advantages": [
+          "High yield per acre",
+          "Provides steady income for farmers",
+          "Supports local sugar industry",
+          "Can be used for multiple products like sugar and ethanol"
+        ]
+      },
+      {
+        "crop": "Grapes – द्राक्ष",
+        "production_tonnes": 75000,
+        "area_percent": null,
+        "why_important": "The dry climate and suitable soil in Akole are favorable for grape cultivation. Farmers grow grapes for table consumption and wine production.",
+        "advantages": [
+          "High market demand",
+          "Can be exported to other regions",
+          "Supports wine industry",
+          "Provides good income for farmers"
+        ]
+      },
+      {
+        "crop": "Pomegranate – डाळिंब",
+        "production_tonnes": 13500,
+        "area_percent": null,
+        "why_important": "Akole's climate and soil conditions are well-suited for pomegranate cultivation. The fruit has a long shelf life and high market value.",
+        "advantages": [
+          "High selling price",
+          "Requires less water compared to other fruits",
+          "Can be stored for a long time without damage",
+          "Good for small farmers to earn more"
+        ]
+      }
+    ],
+    "major_crops": [
+      "Sugarcane",
+      "Grapes",
+      "Pomegranate",
+      "Wheat"
+    ]
+  },
+  "Parner": {
+    "crops": [
+      {
+        "crop": "Onion – कांदा",
+        "production_tonnes": 204000,
+        "area_percent": 9.5,
+        "why_important": "Parner's Ghanegaon region is known for onion cultivation due to its suitable soil and climate. Onions from this area are stored and exported to various markets.",
+        "advantages": [
+          "High profit margin",
+          "Major employment source",
+          "Can be stored for long periods",
+          "Supports local economy"
+        ]
+      },
+      {
+        "crop": "Jowar – ज्वारी",
+        "production_tonnes": 9500,
+        "area_percent": null,
+        "why_important": "Parner's semi-arid climate is suitable for jowar cultivation. The crop is a staple food and fodder source in the region.",
+        "advantages": [
+          "Drought tolerant",
+          "Provides food and fodder",
+          "Low input cost",
+          "Supports food security"
+        ]
+      },
+      {
+        "crop": "Wheat – गहू",
+        "production_tonnes": 6800,
+        "area_percent": null,
+        "why_important": "Wheat is cultivated in Parner during the winter season, benefiting from available irrigation. It serves as a staple food crop.",
+        "advantages": [
+          "Essential food grain",
+          "Good market demand",
+          "Can be stored for long periods",
+          "Supports food security in the region"
+        ]
+      }
+    ],
+    "major_crops": [
+      "Onion",
+      "Jowar",
+      "Wheat",
+      "Gram"
+    ]
+  }
+}

@@ -1,0 +1,693 @@
+/* AhilyanagarStyle.css - Custom styles for AhilyaNagar section */
+
+:root {
+    --primary-orange: #ffa534;
+    --primary-blue: #0077ff;
+    --soft-beige: #fff8f0;
+    --dark-gray: #333333;
+    --medium-gray: #666666;
+    --light-gray: #f5f5f5;
+    --white: #ffffff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* Base Styles */
+body, .agri-section {
+    font-family: 'Open Sans', 'Inter', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--dark-gray);
+    line-height: 1.6;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: var(--white) !important;
+    padding: 0.5rem 0;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.navbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255,165,52,0.05) 0%, rgba(255,140,0,0.05) 100%);
+    animation: pulse 3s infinite;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-right: 0;
+    animation: fadeInLeft 1s ease-out;
+}
+
+.navbar-brand img {
+    height: 150px;
+    object-fit: contain;
+    transition: all 0.3s ease;
+    animation: float 4s ease-in-out infinite;
+}
+
+.navbar-brand:hover img {
+    transform: scale(1.05) rotate(5deg);
+    animation: none;
+}
+
+.navbar-brand span {
+    color: var(--primary-blue);
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-left: -0.75rem;
+    line-height: 1;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.navbar-brand:hover span {
+    color: var(--primary-orange);
+    transform: translateX(5px);
+}
+
+.nav-link {
+    color: var(--dark-gray) !important;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem !important;
+    position: relative;
+    transition: all 0.3s ease;
+    animation: fadeInRight 1s ease-out;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-orange);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::before {
+    width: 80%;
+}
+
+.nav-link.active::before {
+    width: 80%;
+}
+
+.navbar-toggler {
+    animation: fadeInRight 1s ease-out;
+    transition: all 0.3s ease;
+}
+
+.navbar-toggler:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Ahilyanagar Specific Styles */
+.ahilyanagar-header {
+    background: linear-gradient(135deg, var(--primary-orange) 0%, #ff8c00 100%);
+    color: var(--white);
+    padding: 3rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInDown 1s ease-out;
+}
+
+.ahilyanagar-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255,165,52,0.1) 0%, rgba(255,140,0,0.1) 100%);
+    animation: pulse 3s infinite;
+}
+
+.ahilyanagar-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    position: relative;
+    animation: slideInDown 1s ease-out;
+}
+
+.ahilyanagar-header h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: var(--white);
+    animation: shine 2s infinite;
+}
+
+.ahilyanagar-header .subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+/* Container Styles */
+.ahilyanagar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    animation: fadeInUp 1s ease-out;
+}
+
+/* Taluka Selector Styles */
+.taluka-selector {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+    transition: var(--transition);
+}
+
+.taluka-selector:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.taluka-selector select {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    border: 2px solid var(--primary-orange);
+    border-radius: 8px;
+    background-color: var(--white);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.taluka-selector select:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(0, 119, 255, 0.2);
+}
+
+/* Taluka Info Styles */
+.taluka-info {
+    display: none;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+/* Crop Card Styles */
+.ahilyanagar-crop-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.ahilyanagar-crop-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255,165,52,0.05) 0%, rgba(255,140,0,0.05) 100%);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.ahilyanagar-crop-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.ahilyanagar-crop-card:hover::before {
+    opacity: 1;
+}
+
+.ahilyanagar-crop-title {
+    color: var(--primary-blue);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.ahilyanagar-crop-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: var(--primary-orange);
+    transition: var(--transition);
+}
+
+.ahilyanagar-crop-card:hover .ahilyanagar-crop-title::after {
+    width: 100px;
+}
+
+.ahilyanagar-crop-info {
+    margin: 1rem 0;
+}
+
+.ahilyanagar-crop-production {
+    color: var(--primary-orange);
+    font-weight: 500;
+}
+
+.ahilyanagar-crop-area {
+    color: var(--medium-gray);
+    font-style: italic;
+}
+
+.ahilyanagar-crop-why {
+    background: var(--light-gray);
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.ahilyanagar-crop-why h4 {
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+}
+
+.ahilyanagar-crop-advantages {
+    margin-top: 1rem;
+}
+
+.ahilyanagar-crop-advantages h4 {
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+}
+
+.ahilyanagar-crop-advantages ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.ahilyanagar-crop-advantages li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.ahilyanagar-crop-advantages li::before {
+    content: "✓";
+    color: var(--primary-orange);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* Major Crops Styles */
+.major-crops {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #0056b3 100%);
+    color: var(--white);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+.major-crops h3 {
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.major-crops-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.major-crop-tag {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.major-crop-tag:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Loading Animation */
+.loading {
+    text-align: center;
+    padding: 2rem;
+    display: none;
+}
+
+.loading::after {
+    content: "Loading...";
+    color: var(--primary-blue);
+    animation: pulse 1.5s infinite;
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--dark-gray);
+    color: var(--white);
+    padding: 3rem 0;
+}
+
+.social-links a {
+    color: var(--white) !important;
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    color: var(--primary-orange) !important;
+    transform: translateY(-3px);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.6;
+    }
+}
+
+@keyframes shine {
+    0% {
+        background-position: -100% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.5rem 1rem;
+    }
+    
+    .navbar-brand {
+        gap: 0.15rem;
+    }
+    
+    .navbar-brand img {
+        height: 120px;
+        animation: none;
+    }
+    
+    .navbar-brand span {
+        font-size: 2.2rem;
+        margin-left: -0.5rem;
+    }
+
+    .ahilyanagar-header {
+        padding: 2rem 0;
+    }
+
+    .ahilyanagar-header h1 {
+        font-size: 2rem;
+    }
+
+    .ahilyanagar-container {
+        padding: 1rem;
+    }
+
+    .taluka-selector {
+        padding: 1rem;
+    }
+
+    .ahilyanagar-crop-card {
+        padding: 1rem;
+    }
+
+    .major-crops {
+        padding: 1rem;
+    }
+
+    .major-crop-tag {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.8rem;
+    }
+    
+    .nav-link {
+        animation: fadeInUp 1s ease-out;
+    }
+    
+    .navbar-toggler {
+        animation: fadeInUp 1s ease-out;
+    }
+}
+
+/* Taluka Insights Styles */
+.taluka-insights {
+    margin-top: 2rem;
+    padding: 1rem;
+}
+
+.taluka-insights-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+}
+
+.taluka-insights-card:hover {
+    transform: translateY(-5px);
+}
+
+.taluka-insights-card h3 {
+    color: var(--primary-blue);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    border-bottom: 2px solid var(--primary-orange);
+    padding-bottom: 0.5rem;
+}
+
+.insights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.insight-section {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.insight-section h4 {
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+}
+
+.insight-section p {
+    color: var(--dark-gray);
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .insights-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .taluka-insights-card {
+        padding: 1.5rem;
+    }
+    
+    .insight-section {
+        padding: 1rem;
+    }
+}
+
+/* Light green background for agri sections */
+.bg-light-green {
+    background: #eafbe7;
+}
+
+/* Earthy brown for subheadings */
+.text-brown {
+    color: #7c5a2b;
+}
+
+/* Agriculture anchor nav bar */
+.ahilyanagar-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    background: #eafbe7;
+    border-radius: 1rem;
+    padding: 0.75rem 0.5rem;
+    margin-bottom: 1.5rem;
+}
+.anchor-link {
+    color: #198754;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+.anchor-link:hover {
+    color: #145c32;
+    text-decoration: underline;
+}
+
+/* Agri section spacing and card look */
+.agri-section {
+    max-width: 1100px;
+    margin: 0 auto 2rem auto;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-radius: 1.5rem;
+}
+
+.agri-section h1, .agri-section h2, .agri-section h3 {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+}
+
+.agri-section p, .agri-section ul {
+    font-size: 1.08rem;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    line-height: 1.7;
+}
+
+.agri-section ul {
+    padding-left: 1.5em;
+}
+
+/* Font Awesome icon spacing */
+.agri-section i, .anchor-link i {
+    margin-right: 0.4em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .agri-section {
+        padding: 1.2rem 0.5rem;
+    }
+    .ahilyanagar-anchor-nav {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.5rem 0.2rem;
+    }
+    .agri-section h1 {
+        font-size: 2rem;
+    }
+    .agri-section h2 {
+        font-size: 1.3rem;
+    }
+    .agri-section h3 {
+        font-size: 1.1rem;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+} 

@@ -1,0 +1,101 @@
+/* Phosphorus Fertilizer Page Styles */
+
+.nutrient-chart {
+    height: 300px;
+    margin-bottom: 2rem;
+}
+
+.benefit-card {
+    transition: transform 0.3s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-10px);
+}
+
+.application-timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+.application-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background-color: var(--primary-green);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+    padding-left: 20px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--primary-green);
+}
+
+.crop-recommendation {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.crop-recommendation:hover {
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+.crop-details {
+    display: none;
+    padding: 1rem;
+    border-left: 3px solid var(--primary-green);
+    margin-top: 1rem;
+}
+
+.crop-recommendation.active .crop-details {
+    display: block;
+}
+
+.crop-recommendation.active {
+    background-color: rgba(76, 175, 80, 0.05);
+}
+
+.calculator-form {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.result-box {
+    display: none;
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background-color: #e8f5e9;
+    border-radius: 10px;
+    border-left: 4px solid var(--primary-green);
+}
+
+.soil-ph-chart {
+    height: 300px;
+    margin: 2rem 0;
+}
+
+.interaction-card {
+    border-left: 4px solid var(--primary-green);
+    transition: all 0.3s ease;
+}
+
+.interaction-card:hover {
+    transform: translateX(10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+} 
